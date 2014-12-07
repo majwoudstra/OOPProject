@@ -1,8 +1,9 @@
 import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
 
-public class GUI extends JFrame {
+public class GUI extends JFrame implements ActionListener{
 
     public GUI() {
 
@@ -74,12 +75,12 @@ public class GUI extends JFrame {
         pane.add(b8,c);
         c.gridwidth = 1;
         
-        JButton b9 = new JButton("Start wedstrijd");
+        JButton b9 = new JButton("Start Wedstrijd");
         c.gridx = 2;
         c.gridy = 2;
         pane.add(b9,c);
         
-        JButton b10 = new JButton("Vorig resultaat");
+        JButton b10 = new JButton("Vorig Resultaat");
         c.gridx = 2;
         c.gridy = 3;
         pane.add(b10,c);
@@ -93,7 +94,6 @@ public class GUI extends JFrame {
         c.gridy = 2;
         c.gridheight = 2;
         pane.add(t1,c);
-        //"<html>Stand <br> 1e <br> 2e <br> etc</html>"
         
         JLabel t2 = new JLabel();
         t2.setBorder(BorderFactory.createLineBorder(new Color(0,0,100)));
@@ -101,6 +101,19 @@ public class GUI extends JFrame {
         c.gridx = 3;
         c.gridy = 4;
         pane.add(t2,c);
+        
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+        b5.addActionListener(this);
+        b6.addActionListener(this);
+        b7.addActionListener(this);
+        b8.addActionListener(this);
+        b9.addActionListener(this);
+        b10.addActionListener(this);
+        
+        
 
         pane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         
@@ -118,4 +131,33 @@ public class GUI extends JFrame {
             }
         });
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String choice = e.getActionCommand();
+		if (choice.equals("NEW")){
+			System.out.println("You pressed the new button");
+		}
+		else if (choice.equals("SAVE")){
+			System.out.println("You pressed the save button");
+		}
+		else if (choice.equals("LOAD")){
+			System.out.println("You pressed the load button");
+		}else if (choice.equals("QUIT")){
+			System.out.println("You pressed the quit button");
+		}else if (choice.equals("Opstelling")){
+			System.out.println("You pressed the opstelling button");
+		}else if (choice.equals("Spelers aanpassen")){
+			System.out.println("You pressed the spelers aanpassen button");
+		}else if (choice.equals("Lijst Wisselspelers")){
+			System.out.println("You pressed the lijst wisselspelers button");
+		}else if (choice.equals("Koop/Verkoop")){
+			System.out.println("You pressed the koop/verkoop button");
+		}else if (choice.equals("Start Wedstrijd")){
+			System.out.println("You pressed the start wedstrijd button");
+		}else if (choice.equals("Vorig Resultaat")){
+			System.out.println("You pressed the vorig resultaat button");
+		}
+	}
 }
