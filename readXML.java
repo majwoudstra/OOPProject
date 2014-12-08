@@ -91,12 +91,13 @@ public class readXML {
 	 */
 	private Player getPlayer(Element PlayEl){
 		String name = getTextValue(PlayEl, "name");
-		String offence = getTextValue(PlayEl, "offence");
-		String defence = getTextValue(PlayEl, "defence");
-		String stamina = getTextValue(PlayEl, "stamina");
-		String playernumber = getTextValue(PlayEl, "playernumber");
-		String id = getTextValue(PlayEl, "id");
-		Player e = new Player(name, offence, defence, stamina, playernumber, id);
+		int offence = getIntValue(PlayEl, "offence");
+		int defence = getIntValue(PlayEl, "defence");
+		int stamina = getIntValue(PlayEl, "stamina");
+		int playernumber = getIntValue(PlayEl, "playernumber");
+		int id = getIntValue(PlayEl, "id");
+		boolean isactive = Boolean.parseBoolean(getTextValue(PlayEl, "isactive"));
+		Player e = new Player(name, offence, defence, stamina, playernumber, id, isactive);
 		return e;
 	}
 
@@ -155,5 +156,6 @@ public class readXML {
 		//call run example
 		dpe.runExample();
 	}
+	
 }
 
