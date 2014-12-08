@@ -4,6 +4,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener{
+	
+	private String[] wedTeam = {"1- Speler", "2- Speler", "3- Speler", "12- Speler"};
 
     public GUI() {
 
@@ -43,14 +45,17 @@ public class GUI extends JFrame implements ActionListener{
         c.insets = def;
         c.weighty = 0.5;
         
-        JButton b5 = new JButton("Opstelling");
+        JPanel jp = new JPanel();
+        jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
         c.ipady = 100;
         c.gridx = 0;
         c.gridy = 1;
         c.gridwidth = 2;
         c.gridheight = 2;
         c.insets = new Insets(5,5,5,30);
-        pane.add(b5, c);
+        pane.add(jp, c);
+        JLabel label = new JLabel("Opstelling");
+        jp.add(label);
         
         JButton b6 = new JButton ("Spelers aanpassen");
         c.ipady = 60;
@@ -63,6 +68,7 @@ public class GUI extends JFrame implements ActionListener{
         c.gridx = 0;
         c.gridy = 4;
         pane.add(b7,c);
+        
         c.insets = def;
         c.gridwidth = 1;
         c.gridheight = 1;
@@ -102,11 +108,59 @@ public class GUI extends JFrame implements ActionListener{
         c.gridy = 4;
         pane.add(t2,c);
         
+
+        
+        JComboBox<String> spelersList1 = new JComboBox<String>(wedTeam);
+        spelersList1.addActionListener(this);
+        JComboBox<String> spelersList2 = new JComboBox<String>(wedTeam);
+        spelersList2.addActionListener(this);
+        JComboBox<String> spelersList3 = new JComboBox<String>(wedTeam);
+        spelersList3.addActionListener(this);
+        JComboBox<String> spelersList4 = new JComboBox<String>(wedTeam);
+        spelersList4.addActionListener(this);
+        JComboBox<String> spelersList5 = new JComboBox<String>(wedTeam);
+        spelersList5.addActionListener(this);
+        JComboBox<String> spelersList6 = new JComboBox<String>(wedTeam);
+        spelersList6.addActionListener(this);
+        JComboBox<String> spelersList7 = new JComboBox<String>(wedTeam);
+        spelersList7.addActionListener(this);
+        JComboBox<String> spelersList8 = new JComboBox<String>(wedTeam);
+        spelersList8.addActionListener(this);
+        JComboBox<String> spelersList9 = new JComboBox<String>(wedTeam);
+        spelersList9.addActionListener(this);
+        JComboBox<String> spelersList10 = new JComboBox<String>(wedTeam);
+        spelersList10.addActionListener(this);
+        JComboBox<String> spelersList11 = new JComboBox<String>(wedTeam);
+        spelersList11.addActionListener(this);
+        
+        spelersList1.setName("keep");
+        spelersList2.setName("def1");
+        spelersList3.setName("def2");
+        spelersList4.setName("def3");
+        spelersList5.setName("def4");
+        spelersList6.setName("mif1");
+        spelersList7.setName("mif2");
+        spelersList8.setName("mif3");
+        spelersList9.setName("off1");
+        spelersList10.setName("off2");
+        spelersList11.setName("off3");
+        
+        jp.add(spelersList1);
+        jp.add(spelersList2);
+        jp.add(spelersList3);
+        jp.add(spelersList4);
+        jp.add(spelersList5);
+        jp.add(spelersList6);
+        jp.add(spelersList7);
+        jp.add(spelersList8);
+        jp.add(spelersList9);
+        jp.add(spelersList10);
+        jp.add(spelersList11);
+        
         b1.addActionListener(this);
         b2.addActionListener(this);
         b3.addActionListener(this);
         b4.addActionListener(this);
-        b5.addActionListener(this);
         b6.addActionListener(this);
         b7.addActionListener(this);
         b8.addActionListener(this);
@@ -134,7 +188,6 @@ public class GUI extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		String choice = e.getActionCommand();
 		if (choice.equals("NEW")){
 			System.out.println("You pressed the new button");
@@ -158,6 +211,16 @@ public class GUI extends JFrame implements ActionListener{
 			System.out.println("You pressed the start wedstrijd button");
 		}else if (choice.equals("Vorig Resultaat")){
 			System.out.println("You pressed the vorig resultaat button");
+		}else{
+			JComboBox<String> cb = (JComboBox<String>)e.getSource();
+			String speler = (String)cb.getSelectedItem();
+			String[] parts = speler.split("-");
+			int rn = Integer.parseInt(parts[0]);			
+			System.out.println(rn);
+			String source = e.getSource().toString();
+			String[] naam = source.split(",");
+			String nm = naam[0].substring(22);
+			System.out.println(nm);
 		}
 	}
 }
