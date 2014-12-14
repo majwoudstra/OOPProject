@@ -5,17 +5,33 @@ import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener{
 	
-	private String[] wedTeam = {"1- Speler", "2- Speler", "3- Speler", "12- Speler"};
+	private String[] wedTeam = {"0- CurrentPlayer", "1- Player1", "2- Player 2", "4- Player 4"};
+	public static String team = "Not Set Yet";
+	GridBagLayout k = new GridBagLayout();
+	JPanel pane = new JPanel(k);
+	JPanel jp = new JPanel();
+    JComboBox<String> spelersList1 = new JComboBox<String>();
+    JComboBox<String> spelersList2 = new JComboBox<String>();
+    JComboBox<String> spelersList3 = new JComboBox<String>();
+    JComboBox<String> spelersList4 = new JComboBox<String>();
+    JComboBox<String> spelersList5 = new JComboBox<String>();
+    JComboBox<String> spelersList6 = new JComboBox<String>();
+    JComboBox<String> spelersList7 = new JComboBox<String>();
+    JComboBox<String> spelersList8 = new JComboBox<String>();
+    JComboBox<String> spelersList9 = new JComboBox<String>();
+    JComboBox<String> spelersList10 = new JComboBox<String>();
+    JComboBox<String> spelersList11 = new JComboBox<String>();
+    boolean change = false;
+
 
     public GUI() {
-
+    	setSize(1080,720);
         initUI();
     }
 
     private final void initUI() {
     	
-    	GridBagLayout k = new GridBagLayout();
-    	JPanel pane = new JPanel(k);
+
     	pane.setLayout(k);
     	GridBagConstraints c = new GridBagConstraints();
     	c.fill = GridBagConstraints.BOTH;
@@ -45,7 +61,7 @@ public class GUI extends JFrame implements ActionListener{
         c.insets = def;
         c.weighty = 0.5;
         
-        JPanel jp = new JPanel();
+        
         jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
         c.ipady = 100;
         c.gridx = 0;
@@ -56,6 +72,7 @@ public class GUI extends JFrame implements ActionListener{
         pane.add(jp, c);
         JLabel label = new JLabel("Opstelling");
         jp.add(label);
+
         
         JButton b6 = new JButton ("Spelers aanpassen");
         c.ipady = 60;
@@ -80,15 +97,17 @@ public class GUI extends JFrame implements ActionListener{
         c.gridy = 1;
         pane.add(b8,c);
         c.gridwidth = 1;
+        c.gridheight = 1;
         
-        JButton b9 = new JButton("Start Wedstrijd");
+        JButton b9 = new JButton("Vorig Resultaat");
         c.gridx = 2;
         c.gridy = 2;
         pane.add(b9,c);
         
-        JButton b10 = new JButton("Vorig Resultaat");
+        JButton b10 = new JButton("Start Wedstrijd");
         c.gridx = 2;
         c.gridy = 3;
+        c.gridheight = 2;
         pane.add(b10,c);
         
         JLabel t1 = new JLabel();
@@ -108,32 +127,53 @@ public class GUI extends JFrame implements ActionListener{
         c.gridy = 4;
         pane.add(t2,c);
         
-
         
-        JComboBox<String> spelersList1 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Keeper";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList1.addItem(wedTeam[i].toString());
         spelersList1.addActionListener(this);
-        JComboBox<String> spelersList2 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Defense 1";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList2.addItem(wedTeam[i].toString());
         spelersList2.addActionListener(this);
-        JComboBox<String> spelersList3 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Defense 2";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList3.addItem(wedTeam[i].toString());
         spelersList3.addActionListener(this);
-        JComboBox<String> spelersList4 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Defense 3";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList4.addItem(wedTeam[i].toString());
         spelersList4.addActionListener(this);
-        JComboBox<String> spelersList5 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Defense 4";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList5.addItem(wedTeam[i].toString());
         spelersList5.addActionListener(this);
-        JComboBox<String> spelersList6 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Midfield 1";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList6.addItem(wedTeam[i].toString());
         spelersList6.addActionListener(this);
-        JComboBox<String> spelersList7 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Midfield 2";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList7.addItem(wedTeam[i].toString());
         spelersList7.addActionListener(this);
-        JComboBox<String> spelersList8 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Midfield 3";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList8.addItem(wedTeam[i].toString());
         spelersList8.addActionListener(this);
-        JComboBox<String> spelersList9 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Offense 1";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList9.addItem(wedTeam[i].toString());
         spelersList9.addActionListener(this);
-        JComboBox<String> spelersList10 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Offense 2";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList10.addItem(wedTeam[i].toString());
         spelersList10.addActionListener(this);
-        JComboBox<String> spelersList11 = new JComboBox<String>(wedTeam);
+        wedTeam[0] = "0- Offense 3";
+        for(int i = 0; i < wedTeam.length; i++)
+        	spelersList11.addItem(wedTeam[i].toString());
         spelersList11.addActionListener(this);
         
-        spelersList1.setName("keep");
+        spelersList1.setName("gokf");
         spelersList2.setName("def1");
         spelersList3.setName("def2");
         spelersList4.setName("def3");
@@ -145,14 +185,18 @@ public class GUI extends JFrame implements ActionListener{
         spelersList10.setName("off2");
         spelersList11.setName("off3");
         
+        jp.add(new JLabel("Keeper"));
         jp.add(spelersList1);
+        jp.add(new JLabel("Defense"));
         jp.add(spelersList2);
         jp.add(spelersList3);
         jp.add(spelersList4);
         jp.add(spelersList5);
+        jp.add(new JLabel("Midfield"));
         jp.add(spelersList6);
         jp.add(spelersList7);
         jp.add(spelersList8);
+        jp.add(new JLabel("Offense"));
         jp.add(spelersList9);
         jp.add(spelersList10);
         jp.add(spelersList11);
@@ -166,13 +210,10 @@ public class GUI extends JFrame implements ActionListener{
         b8.addActionListener(this);
         b9.addActionListener(this);
         b10.addActionListener(this);
-        
-        
 
         pane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        
         add(pane);
-        
+        change = true;
 
     }
 
@@ -185,11 +226,15 @@ public class GUI extends JFrame implements ActionListener{
             }
         });
     }
+    
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e)  {
 		String choice = e.getActionCommand();
 		if (choice.equals("NEW")){
+			NewGameGUI n = new NewGameGUI(pane);
+			//pane.setVisible(false);
+			n.setVisible(true);
 			System.out.println("You pressed the new button");
 		}
 		else if (choice.equals("SAVE")){
@@ -211,16 +256,76 @@ public class GUI extends JFrame implements ActionListener{
 			System.out.println("You pressed the start wedstrijd button");
 		}else if (choice.equals("Vorig Resultaat")){
 			System.out.println("You pressed the vorig resultaat button");
-		}else{
+		}else if (change){
 			JComboBox<String> cb = (JComboBox<String>)e.getSource();
 			String speler = (String)cb.getSelectedItem();
 			String[] parts = speler.split("-");
 			int rn = Integer.parseInt(parts[0]);			
-			System.out.println(rn);
 			String source = e.getSource().toString();
 			String[] naam = source.split(",");
 			String nm = naam[0].substring(22);
+			System.out.println(rn);
 			System.out.println(nm);
 		}
+	}
+	
+	private void update(){
+		change = false;
+        wedTeam[0] = "0- Keeper";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList1.addItem(wedTeam[i].toString());
+        	spelersList1.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Defense 1";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList2.addItem(wedTeam[i].toString());
+        	spelersList2.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Defense 2";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList3.addItem(wedTeam[i].toString());
+        	spelersList3.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Defense 3";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList4.addItem(wedTeam[i].toString());
+        	spelersList4.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Defense 4";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList5.addItem(wedTeam[i].toString());
+        	spelersList5.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Midfield 1";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList6.addItem(wedTeam[i].toString());
+        	spelersList6.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Midfield 2";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList7.addItem(wedTeam[i].toString());
+        	spelersList7.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Midfield 3";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList8.addItem(wedTeam[i].toString());
+        	spelersList8.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Offense 1";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList9.addItem(wedTeam[i].toString());
+        	spelersList9.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Offense 2";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList10.addItem(wedTeam[i].toString());
+        	spelersList10.removeItemAt(0);
+        }
+        wedTeam[0] = "0- Offense 3";
+        for(int i = 0; i < wedTeam.length; i++){
+        	spelersList11.addItem(wedTeam[i].toString());
+        	spelersList11.removeItemAt(0);
+        }
+        change = true;
 	}
 }
