@@ -24,16 +24,16 @@ public class readXML {
 		res = new Team();
 	}
 
-	public void runExample() {
+	public void runExample(Team in) {
 		
 		//parse the xml file and get the dom object
 		parseXmlFile();
 		
 		//get each employee element and create a Employee object
-		parseDocument();
+		parseDocument(in);
 		
 		//Iterate through the list and print the data
-		printData();
+		
 		
 	}
 	
@@ -61,7 +61,7 @@ public class readXML {
 	}
 
 	
-	private void parseDocument(){
+	private void parseDocument(Team in){
 		//get the root elememt
 		Element docEle = dom.getDocumentElement();
 		
@@ -77,7 +77,7 @@ public class readXML {
 				Player e = getPlayer(el);
 				
 				//add it to list
-				res.add(e);
+				in.add(e);
 			}
 		}
 	}
@@ -134,28 +134,12 @@ public class readXML {
 		return Integer.parseInt(getTextValue(ele,tagName));
 	}
 	
-	/**
-	 * Iterate through the list and print the 
-	 * content to console
-	 */
-	private void printData(){
-		
-		System.out.println("Amount of players '" + res.size() + "'.");
-		
-		Iterator it = res.iterator();
-		while (it.hasNext()){
-			System.out.println(it.next().toString());
-		}
+	
+	
 	}
 
 	
-	public static void main(String[] args){
-		//create an instance
-		readXML dpe = new readXML();
-		
-		//call run example
-		dpe.runExample();
-	}
 	
-}
+	
+
 
