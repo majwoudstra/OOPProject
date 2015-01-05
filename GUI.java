@@ -22,6 +22,7 @@ public class GUI extends JFrame implements ActionListener{
     JComboBox<String> spelersList10 = new JComboBox<String>();
     JComboBox<String> spelersList11 = new JComboBox<String>();
     boolean change = false;
+    static Team t1 = new Team();
 
 
     public GUI() {
@@ -74,17 +75,18 @@ public class GUI extends JFrame implements ActionListener{
         jp.add(label);
 
         
-        JButton b6 = new JButton ("Spelers aanpassen");
+        JLabel t3 = new JLabel("Lijst Wisselspelers");
+        t3.setBorder(BorderFactory.createLineBorder(new Color(0,0,100)));
         c.ipady = 60;
         c.gridx = 0;
         c.gridy = 3;
-        pane.add(b6,c);
+        pane.add(t3,c);
         
-        JButton b7 = new JButton("Lijst Wisselspelers");
-        c.ipady = 50;
-        c.gridx = 0;
-        c.gridy = 4;
-        pane.add(b7,c);
+//        JButton b7 = new JButton("Lijst Wisselspelers");
+//        c.ipady = 50;
+//        c.gridx = 0;
+//        c.gridy = 4;
+//        pane.add(b7,c);
         
         c.insets = def;
         c.gridwidth = 1;
@@ -92,17 +94,20 @@ public class GUI extends JFrame implements ActionListener{
         
         JButton b8 = new JButton("Koop/Verkoop");
         c.ipady = 20;
-        c.gridwidth = 2;
         c.gridx = 2;
         c.gridy = 1;
         pane.add(b8,c);
-        c.gridwidth = 1;
-        c.gridheight = 1;
         
-        JButton b9 = new JButton("Vorig Resultaat");
+        JButton b9 = new JButton("Opstelling");
+        c.gridx = 3;
+        c.gridy = 1;
+        pane.add(b9,c);
+        
+        JLabel t4 = new JLabel("Vorig Resultaat");
+        t4.setBorder(BorderFactory.createLineBorder(new Color(0,0,100)));
         c.gridx = 2;
         c.gridy = 2;
-        pane.add(b9,c);
+        pane.add(t4,c);
         
         JButton b10 = new JButton("Start Wedstrijd");
         c.gridx = 2;
@@ -205,8 +210,8 @@ public class GUI extends JFrame implements ActionListener{
         b2.addActionListener(this);
         b3.addActionListener(this);
         b4.addActionListener(this);
-        b6.addActionListener(this);
-        b7.addActionListener(this);
+//        b6.addActionListener(this);
+//        b7.addActionListener(this);
         b8.addActionListener(this);
         b9.addActionListener(this);
         b10.addActionListener(this);
@@ -241,21 +246,22 @@ public class GUI extends JFrame implements ActionListener{
 			System.out.println("You pressed the save button");
 		}
 		else if (choice.equals("LOAD")){
-			System.out.println("You pressed the load button");
+			System.out.println(t1.toString());
 		}else if (choice.equals("QUIT")){
-			System.out.println("You pressed the quit button");
-		}else if (choice.equals("Opstelling")){
-			System.out.println("You pressed the opstelling button");
+			dispose();
 		}else if (choice.equals("Spelers aanpassen")){
 			System.out.println("You pressed the spelers aanpassen button");
 		}else if (choice.equals("Lijst Wisselspelers")){
 			System.out.println("You pressed the lijst wisselspelers button");
 		}else if (choice.equals("Koop/Verkoop")){
-			System.out.println("You pressed the koop/verkoop button");
+			BuySellGUI b = new BuySellGUI(pane);
+			b.setVisible(true);
 		}else if (choice.equals("Start Wedstrijd")){
 			System.out.println("You pressed the start wedstrijd button");
-		}else if (choice.equals("Vorig Resultaat")){
-			System.out.println("You pressed the vorig resultaat button");
+		}else if (choice.equals("Opstelling")){
+			OpstellingGUI o = new OpstellingGUI(pane);
+			o.setVisible(true);
+			System.out.println("You pressed the opstelling button");
 		}else if (change){
 			JComboBox<String> cb = (JComboBox<String>)e.getSource();
 			String speler = (String)cb.getSelectedItem();

@@ -29,6 +29,14 @@ public class Team {
 	public Team getTeam(){
 		return this;
 	}
+	
+	public String toString(){
+		String team = "";
+		for(int i=0; i< this.size(); i++){
+			team = team + this.get(i);
+		}
+		return team;
+	}
 
 	
 }

@@ -8,6 +8,7 @@ public class NewGameGUI extends JFrame implements ActionListener{
 	
 	GridBagLayout k = new GridBagLayout();
 	JPanel pane = new JPanel();
+	static Team t1 = new Team();
 	
 	public NewGameGUI(JPanel k){
 	   	setSize(1080,720);
@@ -139,7 +140,34 @@ public class NewGameGUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String team = e.getActionCommand();
 		GUI.team = team;
+		Player p1 = new Player("1", 20, 20, 20, 1,1, true);
+		Player p2 = new Player("2", 20, 20, 20, 1,1, true);
+		Player p3 = new Player("3", 20, 20, 20, 1,1, true);
+		Player p4 = new Player("4", 20, 20, 20, 1,1, true);
+		Player p5 = new Player("5", 20, 20, 20, 1,1, true);
+		Player p6 = new Player("6", 20, 20, 20, 1,1, true);
+		Player p7 = new Player("7", 20, 20, 20, 1,1, true);
+		Player p8 = new Player("8", 20, 20, 20, 1,1, true);
+		Player p9 = new Player("9", 20, 20, 20, 1,1, true);
+		Player p10 = new Player("10", 20, 20, 20, 1,1, true);
+		Player p11 = new Player("11", 20, 20, 20, 1,1, true);
+		Team t1 = new Team();
+		t1.add(p1);
+		t1.add(p2);
+		t1.add(p3);
+		t1.add(p4);
+		t1.add(p5);
+		t1.add(p6);
+		t1.add(p7);
+		t1.add(p8);
+		t1.add(p9);
+		t1.add(p10);
+		t1.add(p11);
+		end(t1);
 		dispose();
+	}
+	public static void end(Team t2){
+		GUI.t1 = t2;
 	}
 
 }
