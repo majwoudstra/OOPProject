@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Iterator;
+
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,7 +14,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
 
-//For jdk1.5 with built in xerces parser
+
 
 
 
@@ -26,11 +26,10 @@ public class writeXMLtest {
 Team res = new Team();
 Document dom;
 
-private void loadData(){
-	res.add(new Player("Ronald van Gool", 10, 50, 100, 7, 6, true));
-	res.add(new Player("Robin van Persie", 100, 30, 70, 11, 4, true));
+
+
 	
-}
+
 	private void createDocument(){
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -46,24 +45,78 @@ private void loadData(){
 		
 	
 	}
-	private void createDOMTree(){
+	private void createDOMTree(Division in){
 		Element rootEle = 
-				dom.createElement("team");
+				dom.createElement("Division");
 		dom.appendChild(rootEle);
-		@SuppressWarnings("rawtypes")
-		Iterator it = res.iterator();
-		while(it.hasNext()){
-			Player e = (Player)it.next();
-			Element playEle = createPlayerElement(e);
-			rootEle.appendChild(playEle);
+		
+		for(int i=0;i<Division.Size();i++){
+			
+			Element teamEle = createTeamElement(Division.get(i));
+			
+			switch (i){
+			case 0:
+				teamEle.setAttribute("name", "Ado");
+				break;
+			case 1:
+				teamEle.setAttribute("name", "Ajax");
+				break;
+			case 2:
+				teamEle.setAttribute("name", "AZ");
+				break;
+			case 3:
+				teamEle.setAttribute("name", "Cambuur");
+				break;
+			case 4:
+				teamEle.setAttribute("name", "Dordrecht");
+				break;
+			case 5:
+				teamEle.setAttribute("name", "Excelsior");
+				break;
+			case 6:
+				teamEle.setAttribute("name", "Feyenoord");
+				break;
+			case 7:
+				teamEle.setAttribute("name", "GoAhead");
+				break;
+			case 8:
+				teamEle.setAttribute("name", "Groningen");
+				break;
+			case 9:
+				teamEle.setAttribute("name", "Heerenveen");
+				break;
+			case 10:
+				teamEle.setAttribute("name", "Heracles");
+				break;
+			case 11:
+				teamEle.setAttribute("name", "NAC");
+				break;
+			case 12:
+				teamEle.setAttribute("name", "PEC");
+				break;
+			case 13:
+				teamEle.setAttribute("name", "PSV");
+				break;
+			case 14:
+				teamEle.setAttribute("name", "Twente");
+				break;
+			case 15:
+				teamEle.setAttribute("name", "Utrecht");
+				break;
+			case 16:
+				teamEle.setAttribute("name", "Vitesse");
+				break;
+			case 17:
+				teamEle.setAttribute("name", "WillemII");
+				break;
+			}
+			rootEle.appendChild(teamEle);
 		}
 		
 	}
 	private Element createPlayerElement(Player p){
 		Element playEle = dom.createElement("player");
-		Element nameEle = dom.createElement("name");
-		Text nameText = dom.createTextNode(p.GetName());
-		nameEle.appendChild(nameText);
+		playEle.setAttribute("name", p.GetName());
 		
 		Element offEle = dom.createElement("offence");
 		Text offText = dom.createTextNode(Integer.toString(p.GetOffence()));
@@ -81,26 +134,22 @@ private void loadData(){
 		Text pnumText = dom.createTextNode(Integer.toString(p.GetPlayerNumber()));
 		pnumEle.appendChild(pnumText);
 		
-		Element pidEle = dom.createElement("id");
-		Text pidText = dom.createTextNode(Integer.toString(p.GetId()));
-		pidEle.appendChild(pidText);
+		
 		
 		Element actEle = dom.createElement("isactive");
 		Text actText = dom.createTextNode(String.valueOf(p.GetIsActive()));
 		actEle.appendChild(actText);
 		
-		playEle.appendChild(nameEle);
+		
 		playEle.appendChild(offEle);
 		playEle.appendChild(defEle);
 		playEle.appendChild(stamEle);
 		playEle.appendChild(pnumEle);
-		playEle.appendChild(pidEle);
 		playEle.appendChild(actEle);
 		
 		return playEle;
 	}
 	
-	@SuppressWarnings("deprecation")
 	private void printToFile(){
 
 		try
@@ -112,7 +161,7 @@ private void loadData(){
 			//to generate output to console use this serializer
 			//XMLSerializer serializer = new XMLSerializer(System.out, format);
 			
-			FileOutputStream out = new FileOutputStream(new File("book.xml"));
+			FileOutputStream out = new FileOutputStream(new File("save2.xml"));
 			
 			XMLSerializer serializer = new XMLSerializer(out, format);
 			
@@ -123,22 +172,23 @@ private void loadData(){
 		    ie.printStackTrace();
 		}
 	}
-	public void runExample(){
+	public void runExample(Division in){
 		System.out.println("Started .. ");
-		createDOMTree();
+		createDOMTree(in);
 		printToFile();
 		System.out.println("Generated file successfully.");
 	}
 	public writeXMLtest(){
-		loadData();
+		
 		createDocument();
 	}
-	public static void main(String args[]) {
-
-		//create an instance
-		writeXMLtest xce = new writeXMLtest();
-
-		//run the example
-		xce.runExample();
+	private Element createTeamElement(Team in){
+		Element teamEle = dom.createElement("team");
+		for (int i=0;i<in.size();i++){
+			Element playEle = createPlayerElement(in.get(i));
+			teamEle.appendChild(playEle);
+			
+		}
+		return teamEle;
 	}
 }

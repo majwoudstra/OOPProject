@@ -6,17 +6,17 @@ public class Player {
 	int defence;
 	int stamina;
 	int playernumber;
-	int id;
+	
 	boolean isactive;
 
 	public Player(String name, int offence, int defence, int stamina,
-			int playernumber, int id, boolean isactive) {
+			int playernumber, boolean isactive) {
 		this.name = name;
 		this.offence = offence;
 		this.defence = defence;
 		this.stamina = stamina;
 		this.playernumber = playernumber;
-		this.id = id;
+		
 		this.isactive = isactive;
 	}
 
@@ -39,9 +39,7 @@ public class Player {
 	public int GetPlayerNumber() {
 		return this.playernumber;
 	}
-	public int GetId(){
-		return this.id;
-	}
+	
 	public boolean GetIsActive(){
 		return this.isactive;
 	}
@@ -60,9 +58,7 @@ public class Player {
 	public void setPlayerNumber(int playernumber){
 		this.playernumber = playernumber;
 	}
-	public void setId(int id){
-		this.id = id;
-	}
+	
 	public void setIsActive(boolean isactive){
 		this.isactive = isactive;
 	}
@@ -73,7 +69,6 @@ public class Player {
 		res += "defence: " + this.GetDefence() + "\n";
 		res += "stamina: " + this.GetStamina() + "\n";
 		res += "playernumber: " + this.GetPlayerNumber() + "\n";
-		res += "id: " + this.GetId() + "\n";
 		res += "isactive: " + this.GetIsActive() + "\n";
 		return res;
 	}

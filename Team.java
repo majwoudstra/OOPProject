@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class Team {
 
-	private static ArrayList<Player> Team = new ArrayList<Player>();
+	private ArrayList<Player> Team = new ArrayList<Player>();
 
 	public void add(Player player) {
 		Team.add(player);

@@ -1,8 +1,4 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,99 +10,176 @@ import org.xml.sax.SAXException;
 
 public class readXML {
 
-	//No generics
+	
+	Team Ado = new Team();
+	Team Ajax = new Team();
+	Team PSV = new Team();
+	Team AZ = new Team();
+	Team Feyenoord = new Team();
+	Team Vitesse = new Team();
+	Team Cambuur = new Team();
+	Team GoAhead = new Team();
+	Team Heerenveen = new Team();
+	Team Excelsior = new Team();
+	Team Dordrecht = new Team();
+	Team Groningen = new Team();
+	Team Twente = new Team();
+	Team Utrecht = new Team();
+	Team Heracles = new Team();
+	Team NAC = new Team();
+	Team PEC = new Team();
+	Team WillemII = new Team();
+	
+	// No generics
 	Team res;
 	Document dom;
 
-
-	public readXML(){
-		//create a list to hold the employee objects
+	public readXML() {
+		// create a list to hold the employee objects
 		res = new Team();
 	}
 
-	public void runExample(Team in) {
-		
-		//parse the xml file and get the dom object
-		parseXmlFile();
-		
-		//get each employee element and create a Employee object
-		parseDocument(in);
-		
-		//Iterate through the list and print the data
-		
-		
-	}
-	
-	
-	private void parseXmlFile(){
-		//get the factory
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		
-		try {
-			
-			//Using factory get an instance of document builder
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			
-			//parse using builder to get DOM representation of the XML file
-			dom = db.parse("player.xml");
-			
+	public void runExample(Division in) {
 
-		}catch(ParserConfigurationException pce) {
+		// parse the xml file and get the dom object
+		parseXmlFile();
+
+		// get each employee element and create a Employee object
+		parseDocument();
+
+		// Iterate through the list and print the data
+		FillDivision(in);
+	}
+
+	private void parseXmlFile() {
+		// get the factory
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+		try {
+
+			// Using factory get an instance of document builder
+			DocumentBuilder db = dbf.newDocumentBuilder();
+
+			// parse using builder to get DOM representation of the XML file
+			dom = db.parse("save.xml");
+
+		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
-		}catch(SAXException se) {
+		} catch (SAXException se) {
 			se.printStackTrace();
-		}catch(IOException ioe) {
+		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
 	}
 
-	
-	private void parseDocument(Team in){
-		//get the root elememt
+	private void parseDocument() {
+		// get the root elememt
 		Element docEle = dom.getDocumentElement();
-		
-		//get a nodelist of <employee> elements
-		NodeList nl = docEle.getElementsByTagName("player");
-		if(nl != null && nl.getLength() > 0) {
-			for(int i = 0 ; i < nl.getLength();i++) {
+
+		// get a nodelist of <employee> elements
+		NodeList nl = docEle.getElementsByTagName("team");
+		if (nl != null && nl.getLength() > 0) {
+			for (int i = 0; i < nl.getLength(); i++) {
+
+				// get the employee element
+				Element el = (Element) nl.item(i);
+				String name = el.getAttribute("name");
+				// get the Employee object
 				
-				//get the employee element
-				Element el = (Element)nl.item(i);
+				Team res = new Team();
+				res = AddToTeam(el);
+
+				// add it to list
+				switch (name){
+				case "Ado":
+					Ado = res;
+					break;
+				case "Ajax":
+					Ajax = res;
+					break;
+				case "AZ":
+					AZ = res;
+					break;
+				case "Excelsior":
+					Excelsior = res;
+					break;
+				case "Dordrecht":
+					Dordrecht = res;
+					break;
+				case "Groningen":
+					Groningen = res;
+					break;
+				case "Twente":
+					Twente = res;
+					break;
+				case "Utrecht":
+					Utrecht = res;
+					break;
+				case "Feyenoord":
+					Feyenoord = res;
+					break;
+				case "GoAhead":
+					GoAhead = res;
+					break;
+				case "Heracles":
+					Heracles = res;
+					break;
+				case "NAC":
+					NAC = res;
+					break;
+				case "PEC":
+					PEC = res;
+					break;
+				case "PSV":
+					PSV = res;
+					break;
+				case "Cambuur":
+					Cambuur = res;
+					break;
+				case "Heerenveen":
+					Heerenveen = res;
+					break;
+				case "Vitesse":
+					Vitesse = res;
+					break;
+				case "WillemII":
+					WillemII = res;
+					break;
+					
 				
-				//get the Employee object
-				Player e = getPlayer(el);
-				
-				//add it to list
-				in.add(e);
+					
+				}
+				}
 			}
 		}
-	}
-
+	
 
 	/**
-	 * I take an employee element and read the values in, create
-	 * an Employee object and return it
+	 * I take an employee element and read the values in, create an Employee
+	 * object and return it
+	 * 
 	 * @param empEl
 	 * @return
 	 */
-	private Player getPlayer(Element PlayEl){
-		String name = getTextValue(PlayEl, "name");
+	private Player getPlayer(Element PlayEl) {
+		String name = PlayEl.getAttribute("name");
 		int offence = getIntValue(PlayEl, "offence");
 		int defence = getIntValue(PlayEl, "defence");
 		int stamina = getIntValue(PlayEl, "stamina");
 		int playernumber = getIntValue(PlayEl, "playernumber");
-		int id = getIntValue(PlayEl, "id");
-		boolean isactive = Boolean.parseBoolean(getTextValue(PlayEl, "isactive"));
-		Player e = new Player(name, offence, defence, stamina, playernumber, id, isactive);
+		
+		boolean isactive = Boolean
+				.parseBoolean(getTextValue(PlayEl, "isactive"));
+		Player e = new Player(name, offence, defence, stamina, playernumber,
+				 isactive);
 		return e;
 	}
 
-
 	/**
-	 * I take a xml element and the tag name, look for the tag and get
-	 * the text content 
-	 * i.e for <employee><name>John</name></employee> xml snippet if
-	 * the Element points to employee node and tagName is name I will return John  
+	 * I take a xml element and the tag name, look for the tag and get the text
+	 * content i.e for <employee><name>John</name></employee> xml snippet if the
+	 * Element points to employee node and tagName is name I will return John
+	 * 
 	 * @param ele
 	 * @param tagName
 	 * @return
@@ -114,32 +187,61 @@ public class readXML {
 	private String getTextValue(Element ele, String tagName) {
 		String textVal = null;
 		NodeList nl = ele.getElementsByTagName(tagName);
-		if(nl != null && nl.getLength() > 0) {
-			Element el = (Element)nl.item(0);
+		if (nl != null && nl.getLength() > 0) {
+			Element el = (Element) nl.item(0);
 			textVal = el.getFirstChild().getNodeValue();
 		}
 
 		return textVal;
 	}
 
-	
 	/**
 	 * Calls getTextValue and returns a int value
+	 * 
 	 * @param ele
 	 * @param tagName
 	 * @return
 	 */
 	private int getIntValue(Element ele, String tagName) {
-		//in production application you would catch the exception
-		return Integer.parseInt(getTextValue(ele,tagName));
-	}
-	
-	
-	
+		// in production application you would catch the exception
+		return Integer.parseInt(getTextValue(ele, tagName));
 	}
 
-	
-	
-	
+	private Team AddToTeam(Element el) {
+		Team res = new Team();
+		NodeList nl = el.getElementsByTagName("player");
+		if (nl != null && nl.getLength() > 0) {
+			for (int i = 0; i < nl.getLength(); i++) {
+				Element ez = (Element) nl.item(i);
+				Player e = getPlayer(ez);
+				
+				res.add(e);
+					
+				}
+				
+			}
+		return res;
+		}
+	private void FillDivision(Division in){
+		in.add(Ado); //0
+		in.add(Ajax); //1
+		in.add(AZ); //2
+		in.add(Cambuur); //3
+		in.add(Dordrecht); //4
+		in.add(Excelsior); //5
+		in.add(Feyenoord); //6
+		in.add(GoAhead); //7
+		in.add(Groningen); //8
+		in.add(Heerenveen); //9
+		in.add(Heracles); //10
+		in.add(NAC); //11
+		in.add(PEC); //12
+		in.add(PSV); //13
+		in.add(Twente); //14
+		in.add(Utrecht); //15
+		in.add(Vitesse); //16
+		in.add(WillemII); //17
+	}
+	}
 
 
