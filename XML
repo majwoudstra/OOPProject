@@ -1,6 +1,6 @@
 <Competitie>
 	<Team>
-		<Teamnaam>Ajax</Teamnaam>
+		<Name>Ajax</Name>
 		<Speler> 	
 			<Voornaam>Jasper</Voornaam>
 			<Achternaam>Cillessen</Achternaam>
@@ -310,12 +310,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>ADO Den Haag</Teamnaam>
+		<Name>ADO Den Haag</Name>
 		<Speler> 	
 			<Voornaam>Robert</Voornaam>
 			<Achternaam>Zwinkels</Achternaam>
@@ -625,12 +625,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>AZ</Teamnaam>
+		<Name>AZ</Name>
 		<Speler> 	
 			<Voornaam>Esteban</Voornaam>
 			<Achternaam>Alvarado</Achternaam>
@@ -940,12 +940,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>SC Cambuur</Teamnaam>
+		<Name>SC Cambuur</Name>
 		<Speler> 	
 			<Voornaam>Leonard</Voornaam>
 			<Achternaam>Nienhuis</Achternaam>
@@ -1255,12 +1255,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>FC Dordrecht</Teamnaam>
+		<Name>FC Dordrecht</Name>
 		<Speler> 	
 			<Voornaam>Filip</Voornaam>
 			<Achternaam>Kurto</Achternaam>
@@ -1570,12 +1570,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>Excelsior</Teamnaam>
+		<Name>Excelsior</Name>
 		<Speler> 	
 			<Voornaam>Jordy</Voornaam>
 			<Achternaam>Deckers</Achternaam>
@@ -1608,7 +1608,7 @@
 			<Voornaam>Kevin</Voornaam>
 			<Achternaam>Diermen</Achternaam>
 			<Rugnummer>3</Rugnummer>
-			<Aanval>31/Aanval>
+			<Aanval>31</Aanval>
 			<Spelmaker>54</Spelmaker>
 			<Verdediging>61</Verdediging>
 			<Uithoudingsvermogen>69</Uithoudingsvermogen>
@@ -1885,12 +1885,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>Feyenoord</Teamnaam>
+		<Name>Feyenoord</Name>
 		<Speler> 	
 			<Voornaam>Kenneth</Voornaam>
 			<Achternaam>Vermeer</Achternaam>
@@ -2200,12 +2200,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>Go Ahead Eagles</Teamnaam>
+		<Name>Go Ahead Eagles</Name>
 		<Speler> 	
 			<Voornaam>Mickey</Voornaam>
 			<Achternaam>van der Hart</Achternaam>
@@ -2515,12 +2515,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>FC Groningen</Teamnaam>
+		<Name>FC Groningen</Name>
 		<Speler> 	
 			<Voornaam>Sergio</Voornaam>
 			<Achternaam>Padt</Achternaam>
@@ -2830,12 +2830,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>SC Heerenveen</Teamnaam>
+		<Name>SC Heerenveen</Name>
 		<Speler> 	
 			<Voornaam>Kristoffer</Voornaam>
 			<Achternaam>Nordfeldt</Achternaam>
@@ -3145,12 +3145,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>Heracles Almelo</Teamnaam>
+		<Name>Heracles Almelo</Name>
 		<Speler> 	
 			<Voornaam>Dennis</Voornaam>
 			<Achternaam>Telgenkamp</Achternaam>
@@ -3460,12 +3460,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>NAC Breda</Teamnaam>
+		<Name>NAC Breda</Name>
 		<Speler> 	
 			<Voornaam>Jelle</Voornaam>
 			<Achternaam>ten Rouwelaar</Achternaam>
@@ -3775,12 +3775,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>PEC Zwolle</Teamnaam>
+		<Name>PEC Zwolle</Name>
 		<Speler> 	
 			<Voornaam>Warner</Voornaam>
 			<Achternaam>Hahn</Achternaam>
@@ -4090,12 +4090,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>PSV</Teamnaam>
+		<Name>PSV</Name>
 		<Speler> 	
 			<Voornaam>Jeroen</Voornaam>
 			<Achternaam>Zoet</Achternaam>
@@ -4405,12 +4405,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>FC Twente</Teamnaam>
+		<Name>FC Twente</Name>
 		<Speler> 	
 			<Voornaam>Nick</Voornaam>
 			<Achternaam>Marsman</Achternaam>
@@ -4720,12 +4720,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>FC Utrecht</Teamnaam>
+		<Name>FC Utrecht</Name>
 		<Speler> 	
 			<Voornaam>Robbin</Voornaam>
 			<Achternaam>Ruiter</Achternaam>
@@ -5035,12 +5035,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>Vitesse</Teamnaam>
+		<Name>Vitesse</Name>
 		<Speler> 	
 			<Voornaam>Piet</Voornaam>
 			<Achternaam>Velthuizen</Achternaam>
@@ -5350,12 +5350,12 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>
 	<Team>
-		<Teamnaam>Willem II</Teamnaam>
+		<Name>Willem II</Name>
 		<Speler> 	
 			<Voornaam>Kostas</Voornaam>
 			<Achternaam>Lamprou</Achternaam>
@@ -5665,9 +5665,9 @@
 			<Prijs>2000000</Prijs>
 		</Speler> 
 		<Punten>0</Punten>
-		<Doelpunten voor>0</Doelpunten voor>
-		<Doelpunten tegen>0</Doelpunten tegen>
+		<DoelpuntenVoor>0</DoelpuntenVoor>
+		<DoelpuntenTegen>0</DoelpuntenTegen>
 		<Doelsaldo>0</Doelsaldo>
 	</Team>	
-	<Huidige wedstriijd>1</Huidige wedstrijd>
+	<HuidigeWedstrijd>1</HuidigeWedstrijd>
 </Competitie>
