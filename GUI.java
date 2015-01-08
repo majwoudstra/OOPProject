@@ -1,9 +1,39 @@
 import java.awt.*;
+
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
+
 public class GUI extends JFrame implements ActionListener{
+	
+	static Team te1 = new Team();
+	
+	static Player p1 = new Player("1", 10, 10, 10, 1, true);
+	static Player p2 = new Player("2", 10, 10, 10, 2, true);
+	static Player p3 = new Player("3", 10, 10, 10, 3, true);
+	static Player p4 = new Player("4", 10, 10, 10, 4, true);
+	static Player p5 = new Player("5", 10, 10, 10, 5, true);
+	static Player p6 = new Player("6", 10, 10, 10, 6, true);
+	static Player p7 = new Player("7", 10, 10, 10, 7, true);
+	static Player p8 = new Player("8", 10, 10, 10, 8, true);
+	static Player p9 = new Player("9", 10, 10, 10, 9, true);
+	static Player p10 = new Player("10", 10, 10, 10, 10, true);
+	static Player p11 = new Player("11", 10, 10, 10, 11, true);
+	static Player p12 = new Player("12", 10, 10, 10, 12, false);
+	static Player p13 = new Player("13", 10, 10, 10, 13, false);
+	static Player p14 = new Player("14", 10, 10, 10, 14, false);
+	static Player p15 = new Player("15", 10, 10, 10, 15, false);
+	static Player p16 = new Player("16", 10, 10, 10, 16, false);
+	static Player p17 = new Player("17", 10, 10, 10, 17, false);
+	static Player p18 = new Player("18", 10, 10, 10, 18, false);
+	static Player p19 = new Player("19", 10, 10, 10, 19, false);
+	static Player p20 = new Player("20", 10, 10, 10, 20, false);
+	static Player p21 = new Player("21", 10, 10, 10, 21, false);
+	
+	static ArrayList<Player> selectie = new ArrayList<Player>();
+	static ArrayList<Player> wissels = new ArrayList<Player>();
 	
 	private String[] wedTeam = {"0- CurrentPlayer", "1- Player1", "2- Player 2", "4- Player 4"};
 	public static String team = "Not Set Yet";
@@ -22,7 +52,6 @@ public class GUI extends JFrame implements ActionListener{
     JComboBox<String> spelersList10 = new JComboBox<String>();
     JComboBox<String> spelersList11 = new JComboBox<String>();
     boolean change = false;
-    static Team t1 = new Team();
 
 
     public GUI() {
@@ -133,49 +162,49 @@ public class GUI extends JFrame implements ActionListener{
         pane.add(t2,c);
         
         
-        wedTeam[0] = "0- Keeper";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList1.addItem(wedTeam[i].toString());
+        spelersList1.addItem(selectie.get(0).toStringRug());
+        for(int i = 1; i < wissels.size(); i++)
+        	spelersList1.addItem(wissels.get(i).toStringRug());
         spelersList1.addActionListener(this);
-        wedTeam[0] = "0- Defense 1";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList2.addItem(wedTeam[i].toString());
+        spelersList2.addItem(selectie.get(1).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList2.addItem(wissels.get(i).toStringRug());
         spelersList2.addActionListener(this);
-        wedTeam[0] = "0- Defense 2";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList3.addItem(wedTeam[i].toString());
+        spelersList3.addItem(selectie.get(2).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList3.addItem(wissels.get(i).toStringRug());
         spelersList3.addActionListener(this);
-        wedTeam[0] = "0- Defense 3";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList4.addItem(wedTeam[i].toString());
+        spelersList4.addItem(selectie.get(3).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList4.addItem(wissels.get(i).toStringRug());
         spelersList4.addActionListener(this);
-        wedTeam[0] = "0- Defense 4";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList5.addItem(wedTeam[i].toString());
+        spelersList5.addItem(selectie.get(4).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList5.addItem(wissels.get(i).toStringRug());
         spelersList5.addActionListener(this);
-        wedTeam[0] = "0- Midfield 1";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList6.addItem(wedTeam[i].toString());
+        spelersList6.addItem(selectie.get(5).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList6.addItem(wissels.get(i).toStringRug());
         spelersList6.addActionListener(this);
-        wedTeam[0] = "0- Midfield 2";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList7.addItem(wedTeam[i].toString());
+        spelersList7.addItem(selectie.get(6).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList7.addItem(wissels.get(i).toStringRug());
         spelersList7.addActionListener(this);
-        wedTeam[0] = "0- Midfield 3";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList8.addItem(wedTeam[i].toString());
+        spelersList8.addItem(selectie.get(7).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList8.addItem(wissels.get(i).toStringRug());
         spelersList8.addActionListener(this);
-        wedTeam[0] = "0- Offense 1";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList9.addItem(wedTeam[i].toString());
+        spelersList9.addItem(selectie.get(8).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList9.addItem(wissels.get(i).toStringRug());
         spelersList9.addActionListener(this);
-        wedTeam[0] = "0- Offense 2";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList10.addItem(wedTeam[i].toString());
+        spelersList10.addItem(selectie.get(9).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList10.addItem(wissels.get(i).toStringRug());
         spelersList10.addActionListener(this);
-        wedTeam[0] = "0- Offense 3";
-        for(int i = 0; i < wedTeam.length; i++)
-        	spelersList11.addItem(wedTeam[i].toString());
+        spelersList11.addItem(selectie.get(10).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList11.addItem(wissels.get(i).toStringRug());
         spelersList11.addActionListener(this);
         
         spelersList1.setName("gokf");
@@ -223,6 +252,39 @@ public class GUI extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
+    	
+
+    	te1.add(p1);
+    	te1.add(p2);
+    	te1.add(p3);
+    	te1.add(p4);
+    	te1.add(p5);
+    	te1.add(p6);
+    	te1.add(p7);
+    	te1.add(p8);
+    	te1.add(p9);
+    	te1.add(p10);
+    	te1.add(p11);
+    	te1.add(p12);
+    	te1.add(p13);
+    	te1.add(p14);
+    	te1.add(p15);
+    	te1.add(p16);
+    	te1.add(p17);
+    	te1.add(p18);
+    	te1.add(p19);
+    	te1.add(p20);
+    	te1.add(p21);
+
+    	for(int i = 0; i < 11; i++){
+    		selectie.add(te1.get(i));
+    	}
+
+    	for(int i = 0; i < te1.getTeam().size(); i++){
+    		if(!te1.getTeam().get(i).GetIsActive()){
+    			wissels.add(te1.getTeam().get(i));
+    		}
+    	}
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -246,7 +308,7 @@ public class GUI extends JFrame implements ActionListener{
 			System.out.println("You pressed the save button");
 		}
 		else if (choice.equals("LOAD")){
-			System.out.println(t1.toString());
+			System.out.println(te1.toString());
 		}else if (choice.equals("QUIT")){
 			dispose();
 		}else if (choice.equals("Spelers aanpassen")){
