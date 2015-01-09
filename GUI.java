@@ -9,6 +9,7 @@ import javax.swing.*;
 public class GUI extends JFrame implements ActionListener{
 	
 	static Team te1 = new Team();
+	int i = 0;
 	
 	static Player p1 = new Player("1", 10, 10, 10, 1, true);
 	static Player p2 = new Player("2", 10, 10, 10, 2, true);
@@ -34,6 +35,10 @@ public class GUI extends JFrame implements ActionListener{
 	
 	static ArrayList<Player> selectie = new ArrayList<Player>();
 	static ArrayList<Player> wissels = new ArrayList<Player>();
+	
+	public static int defence = 4;
+	public static int midfield = 3;
+	public static int offence = 3;
 	
 	private String[] wedTeam = {"0- CurrentPlayer", "1- Player1", "2- Player 2", "4- Player 4"};
 	public static String team = "Not Set Yet";
@@ -100,8 +105,7 @@ public class GUI extends JFrame implements ActionListener{
         c.gridheight = 2;
         c.insets = new Insets(5,5,5,30);
         pane.add(jp, c);
-        JLabel label = new JLabel("Opstelling");
-        jp.add(label);
+        jp.add(new JLabel("Opstelling"));
 
         
         JLabel t3 = new JLabel("Lijst Wisselspelers");
@@ -207,33 +211,68 @@ public class GUI extends JFrame implements ActionListener{
         	spelersList11.addItem(wissels.get(i).toStringRug());
         spelersList11.addActionListener(this);
         
-        spelersList1.setName("gokf");
-        spelersList2.setName("def1");
-        spelersList3.setName("def2");
-        spelersList4.setName("def3");
-        spelersList5.setName("def4");
-        spelersList6.setName("mif1");
-        spelersList7.setName("mif2");
-        spelersList8.setName("mif3");
-        spelersList9.setName("off1");
-        spelersList10.setName("off2");
-        spelersList11.setName("off3");
+        spelersList1.setName("1");
+        spelersList2.setName("2");
+        spelersList3.setName("3");
+        spelersList4.setName("4");
+        spelersList5.setName("5");
+        spelersList6.setName("6");
+        spelersList7.setName("7");
+        spelersList8.setName("8");
+        spelersList9.setName("9");
+        spelersList10.setName("10");
+        spelersList11.setName("11");
         
         jp.add(new JLabel("Keeper"));
         jp.add(spelersList1);
         jp.add(new JLabel("Defense"));
         jp.add(spelersList2);
+        
+        if(defence == 1){
+            jp.add(new JLabel("Midfield"));
+        }
+        
         jp.add(spelersList3);
+        
+        if(defence == 2){
+            jp.add(new JLabel("Midfield"));
+        }
+        
         jp.add(spelersList4);
+        
+        if(defence == 3){
+            jp.add(new JLabel("Midfield"));
+        }
         jp.add(spelersList5);
-        jp.add(new JLabel("Midfield"));
+        if(defence == 4){
+            jp.add(new JLabel("Midfield"));
+        }
+    
         jp.add(spelersList6);
+        if(defence == 5){
+            jp.add(new JLabel("Midfield"));
+        }
+        if(midfield + defence == 5){
+            jp.add(new JLabel("Offense"));
+        }
         jp.add(spelersList7);
+        if(midfield + defence == 6){
+            jp.add(new JLabel("Offense"));
+        }
         jp.add(spelersList8);
-        jp.add(new JLabel("Offense"));
+        if(midfield + defence == 7){
+            jp.add(new JLabel("Offense"));
+        }
         jp.add(spelersList9);
+        if(midfield + defence == 8){
+            jp.add(new JLabel("Offense"));
+        }
         jp.add(spelersList10);
+        if(midfield + defence == 9){
+            jp.add(new JLabel("Offense"));
+        }
         jp.add(spelersList11);
+
         
         b1.addActionListener(this);
         b2.addActionListener(this);
@@ -297,103 +336,175 @@ public class GUI extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e)  {
-		String choice = e.getActionCommand();
-		if (choice.equals("NEW")){
-			NewGameGUI n = new NewGameGUI(pane);
-			//pane.setVisible(false);
-			n.setVisible(true);
-			System.out.println("You pressed the new button");
-		}
-		else if (choice.equals("SAVE")){
-			System.out.println("You pressed the save button");
-		}
-		else if (choice.equals("LOAD")){
-			System.out.println(te1.toString());
-		}else if (choice.equals("QUIT")){
-			dispose();
-		}else if (choice.equals("Spelers aanpassen")){
-			System.out.println("You pressed the spelers aanpassen button");
-		}else if (choice.equals("Lijst Wisselspelers")){
-			System.out.println("You pressed the lijst wisselspelers button");
-		}else if (choice.equals("Koop/Verkoop")){
-			BuySellGUI b = new BuySellGUI(pane);
-			b.setVisible(true);
-		}else if (choice.equals("Start Wedstrijd")){
-			System.out.println("You pressed the start wedstrijd button");
-		}else if (choice.equals("Opstelling")){
-			OpstellingGUI o = new OpstellingGUI(pane);
-			o.setVisible(true);
-			System.out.println("You pressed the opstelling button");
-		}else if (change){
-			JComboBox<String> cb = (JComboBox<String>)e.getSource();
-			String speler = (String)cb.getSelectedItem();
-			String[] parts = speler.split("-");
-			int rn = Integer.parseInt(parts[0]);			
-			String source = e.getSource().toString();
-			String[] naam = source.split(",");
-			String nm = naam[0].substring(22);
-			System.out.println(rn);
-			System.out.println(nm);
+		if(change){
+			String choice = e.getActionCommand();
+			if (choice.equals("NEW")){
+				NewGameGUI n = new NewGameGUI(pane);
+				//pane.setVisible(false);
+				n.setVisible(true);
+				System.out.println("You pressed the new button");
+			}
+			else if (choice.equals("SAVE")){
+				System.out.println("You pressed the save button");
+			}
+			else if (choice.equals("LOAD")){
+				System.out.println(te1.toString());
+			}else if (choice.equals("QUIT")){
+				dispose();
+			}else if (choice.equals("Spelers aanpassen")){
+				System.out.println("You pressed the spelers aanpassen button");
+			}else if (choice.equals("Lijst Wisselspelers")){
+				System.out.println("You pressed the lijst wisselspelers button");
+			}else if (choice.equals("Koop/Verkoop")){
+				BuySellGUI b = new BuySellGUI(pane);
+				b.setVisible(true);
+			}else if (choice.equals("Start Wedstrijd")){
+				System.out.println("You pressed the start wedstrijd button");
+			}else if (choice.equals("Opstelling")){
+				OpstellingGUI o = new OpstellingGUI(pane, this);
+				this.setVisible(false);
+				o.setVisible(true);
+				System.out.println("You pressed the opstelling button");
+			}else if (choice.equals("comboBoxChanged")){
+				change = false;
+				JComboBox<String> cb = (JComboBox<String>)e.getSource();
+				String speler = (String)cb.getSelectedItem();
+				String[] parts = speler.split("-");
+				int rn = Integer.parseInt(parts[0]);			
+				String source = e.getSource().toString();
+				String[] naam = source.split(",");
+				String nm = naam[0].substring(22);
+				Player wissel = null;
+				boolean found = false;
+				for(int i = 0; i < wissels.size(); i++){
+					if (wissels.get(i).GetPlayerNumber() == rn && !found){
+						wissel = wissels.get(i);
+						found = true;
+					}
+				}
+				int loc = wissels.indexOf(wissel);
+				int loc2 = loc - 1;
+				int box = Integer.parseInt(nm);
+				if(loc != -1){
+					wissels.set(loc, selectie.get(box-1));
+					selectie.set(box-1,wissel);
+					update();
+					repaint();
+					revalidate();
+				}
+				change = true;
+			}
 		}
 	}
 	
-	private void update(){
-		change = false;
-        wedTeam[0] = "0- Keeper";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList1.addItem(wedTeam[i].toString());
-        	spelersList1.removeItemAt(0);
+	public void update(){
+		jp.removeAll();
+		spelersList1.removeAllItems();
+		spelersList2.removeAllItems();
+		spelersList3.removeAllItems();
+		spelersList4.removeAllItems();
+		spelersList5.removeAllItems();
+		spelersList6.removeAllItems();
+		spelersList7.removeAllItems();
+		spelersList8.removeAllItems();
+		spelersList9.removeAllItems();
+		spelersList10.removeAllItems();
+		spelersList11.removeAllItems();
+		
+        spelersList1.addItem(selectie.get(0).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList1.addItem(wissels.get(i).toStringRug());
+        spelersList1.addActionListener(this);
+        spelersList2.addItem(selectie.get(1).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList2.addItem(wissels.get(i).toStringRug());
+        spelersList2.addActionListener(this);
+        spelersList3.addItem(selectie.get(2).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList3.addItem(wissels.get(i).toStringRug());
+        spelersList3.addActionListener(this);
+        spelersList4.addItem(selectie.get(3).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList4.addItem(wissels.get(i).toStringRug());
+        spelersList4.addActionListener(this);
+        spelersList5.addItem(selectie.get(4).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList5.addItem(wissels.get(i).toStringRug());
+        spelersList5.addActionListener(this);
+        spelersList6.addItem(selectie.get(5).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList6.addItem(wissels.get(i).toStringRug());
+        spelersList6.addActionListener(this);
+        spelersList7.addItem(selectie.get(6).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList7.addItem(wissels.get(i).toStringRug());
+        spelersList7.addActionListener(this);
+        spelersList8.addItem(selectie.get(7).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList8.addItem(wissels.get(i).toStringRug());
+        spelersList8.addActionListener(this);
+        spelersList9.addItem(selectie.get(8).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList9.addItem(wissels.get(i).toStringRug());
+        spelersList9.addActionListener(this);
+        spelersList10.addItem(selectie.get(9).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList10.addItem(wissels.get(i).toStringRug());
+        spelersList10.addActionListener(this);
+        spelersList11.addItem(selectie.get(10).toStringRug());
+        for(int i = 0; i < wissels.size(); i++)
+        	spelersList11.addItem(wissels.get(i).toStringRug());
+        spelersList11.addActionListener(this);
+		
+        jp.add(new JLabel("Opstelling"));
+        jp.add(new JLabel("Keeper"));
+        jp.add(spelersList1);
+        jp.add(new JLabel("Defense"));
+        jp.add(spelersList2);
+        
+        if(defence == 1){
+            jp.add(new JLabel("Midfield"));
         }
-        wedTeam[0] = "0- Defense 1";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList2.addItem(wedTeam[i].toString());
-        	spelersList2.removeItemAt(0);
+        
+        jp.add(spelersList3);
+        
+        if(defence == 2){
+            jp.add(new JLabel("Midfield"));
         }
-        wedTeam[0] = "0- Defense 2";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList3.addItem(wedTeam[i].toString());
-        	spelersList3.removeItemAt(0);
+        
+        jp.add(spelersList4);
+        
+        if(defence == 3){
+            jp.add(new JLabel("Midfield"));
         }
-        wedTeam[0] = "0- Defense 3";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList4.addItem(wedTeam[i].toString());
-        	spelersList4.removeItemAt(0);
+        jp.add(spelersList5);
+        if(defence == 4){
+            jp.add(new JLabel("Midfield"));
         }
-        wedTeam[0] = "0- Defense 4";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList5.addItem(wedTeam[i].toString());
-        	spelersList5.removeItemAt(0);
+    
+        jp.add(spelersList6);
+        if(defence == 5){
+            jp.add(new JLabel("Midfield"));
         }
-        wedTeam[0] = "0- Midfield 1";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList6.addItem(wedTeam[i].toString());
-        	spelersList6.removeItemAt(0);
+        if(midfield + defence == 5){
+            jp.add(new JLabel("Offense"));
         }
-        wedTeam[0] = "0- Midfield 2";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList7.addItem(wedTeam[i].toString());
-        	spelersList7.removeItemAt(0);
+        jp.add(spelersList7);
+        if(midfield + defence == 6){
+            jp.add(new JLabel("Offense"));
         }
-        wedTeam[0] = "0- Midfield 3";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList8.addItem(wedTeam[i].toString());
-        	spelersList8.removeItemAt(0);
+        jp.add(spelersList8);
+        if(midfield + defence == 7){
+            jp.add(new JLabel("Offense"));
         }
-        wedTeam[0] = "0- Offense 1";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList9.addItem(wedTeam[i].toString());
-        	spelersList9.removeItemAt(0);
+        jp.add(spelersList9);
+        if(midfield + defence == 8){
+            jp.add(new JLabel("Offense"));
         }
-        wedTeam[0] = "0- Offense 2";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList10.addItem(wedTeam[i].toString());
-        	spelersList10.removeItemAt(0);
+        jp.add(spelersList10);
+        if(midfield + defence == 9){
+            jp.add(new JLabel("Offense"));
         }
-        wedTeam[0] = "0- Offense 3";
-        for(int i = 0; i < wedTeam.length; i++){
-        	spelersList11.addItem(wedTeam[i].toString());
-        	spelersList11.removeItemAt(0);
-        }
-        change = true;
+        jp.add(spelersList11);
 	}
 }
