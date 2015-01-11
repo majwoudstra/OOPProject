@@ -2,10 +2,15 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Team {
 
+public class Team {
+	private String name;
 	private ArrayList<Player> Team = new ArrayList<Player>();
 
+	public Team(String nm){
+		name = nm;
+	}
+	
 	public void add(Player player) {
 		Team.add(player);
 	}
@@ -14,7 +19,9 @@ public class Team {
 		return Team.size();
 	}
 
-	
+	public String getName(){
+		return name;
+	}
 	
 
 	public Player get(int i) {
@@ -22,9 +29,9 @@ public class Team {
 	}
 
 	
-	public Iterator<Player> iterator() {
-		return Team.iterator();
-	}
+//	public Iterator<Player> iterator() {
+//		return Team.iterator();
+//	}
 
 	public Team getTeam(){
 		return this;

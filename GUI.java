@@ -8,7 +8,10 @@ import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener{
 	
-	static Team te1 = new Team();
+	static division div = new division();
+	public static Team te1 = new Team("Not Set Yet");
+	static Team ado = new Team("ADO");
+	static Team aja = new Team("Ajax");
 	int i = 0;
 	
 	static Player p1 = new Player("1", 10, 10, 10, 1, true);
@@ -33,6 +36,18 @@ public class GUI extends JFrame implements ActionListener{
 	static Player p20 = new Player("20", 10, 10, 10, 20, false);
 	static Player p21 = new Player("21", 10, 10, 10, 21, false);
 	
+	static Player a1 = new Player("Ajax1", 10, 10,10, 1, true);
+	static Player a2 = new Player("Ajax2", 10, 10,10, 2, true);
+	static Player a3 = new Player("Ajax3", 10, 10,10, 3, true);
+	static Player a4 = new Player("Ajax4", 10, 10,10, 4, true);
+	static Player a5 = new Player("Ajax5", 10, 10,10, 5, true);
+	static Player a6 = new Player("Ajax6", 10, 10,10, 6, true);
+	static Player a7 = new Player("Ajax7", 10, 10,10, 7, true);
+	static Player a8 = new Player("Ajax8", 10, 10,10, 8, true);
+	static Player a9 = new Player("Ajax9", 10, 10,10, 9, true);
+	static Player a10 = new Player("Ajax10", 10, 10,10, 10, true);
+	static Player a11 = new Player("Ajax11", 10, 10,10, 11, true);
+	
 	static ArrayList<Player> selectie = new ArrayList<Player>();
 	static ArrayList<Player> wissels = new ArrayList<Player>();
 	
@@ -40,7 +55,6 @@ public class GUI extends JFrame implements ActionListener{
 	public static int midfield = 3;
 	public static int offence = 3;
 	
-	private String[] wedTeam = {"0- CurrentPlayer", "1- Player1", "2- Player 2", "4- Player 4"};
 	public static String team = "Not Set Yet";
 	GridBagLayout k = new GridBagLayout();
 	JPanel pane = new JPanel(k);
@@ -293,38 +307,60 @@ public class GUI extends JFrame implements ActionListener{
     public static void main(String[] args) {
     	
 
-    	te1.add(p1);
-    	te1.add(p2);
-    	te1.add(p3);
-    	te1.add(p4);
-    	te1.add(p5);
-    	te1.add(p6);
-    	te1.add(p7);
-    	te1.add(p8);
-    	te1.add(p9);
-    	te1.add(p10);
-    	te1.add(p11);
-    	te1.add(p12);
-    	te1.add(p13);
-    	te1.add(p14);
-    	te1.add(p15);
-    	te1.add(p16);
-    	te1.add(p17);
-    	te1.add(p18);
-    	te1.add(p19);
-    	te1.add(p20);
-    	te1.add(p21);
+    	ado.add(p1);
+    	ado.add(p2);
+    	ado.add(p3);
+    	ado.add(p4);
+    	ado.add(p5);
+    	ado.add(p6);
+    	ado.add(p7);
+    	ado.add(p8);
+    	ado.add(p9);
+    	ado.add(p10);
+    	ado.add(p11);
+    	ado.add(p12);
+    	ado.add(p13);
+    	ado.add(p14);
+    	ado.add(p15);
+    	ado.add(p16);
+    	ado.add(p17);
+    	ado.add(p18);
+    	ado.add(p19);
+    	ado.add(p20);
+    	ado.add(p21);
+    	
+    	aja.add(a1);
+    	aja.add(a2);
+    	aja.add(a3);
+    	aja.add(a4);
+    	aja.add(a5);
+    	aja.add(a6);
+    	aja.add(a7);
+    	aja.add(a8);
+    	aja.add(a9);
+    	aja.add(a10);
+    	aja.add(a11);
+    	
+    	div.add(ado);
+    	div.add(aja);
 
-    	for(int i = 0; i < 11; i++){
-    		selectie.add(te1.get(i));
+    	if(!te1.getName().equals("Not Set Yet")){
+	    	for(int i = 0; i < 11; i++){
+	    		selectie.add(te1.get(i));
+	    	}
+	
+	    	for(int i = 0; i < te1.getTeam().size(); i++){
+	    		if(!te1.getTeam().get(i).GetIsActive()){
+	    			wissels.add(te1.getTeam().get(i));
+	    		}
+	    	}
     	}
-
-    	for(int i = 0; i < te1.getTeam().size(); i++){
-    		if(!te1.getTeam().get(i).GetIsActive()){
-    			wissels.add(te1.getTeam().get(i));
+    	else{
+    		for(int i = 0; i < 11; i++){
+    			selectie.add(new Player("Blank", 10,10,10,(i+1), true));
     		}
     	}
-
+    	
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 GUI ex = new GUI();
@@ -339,16 +375,17 @@ public class GUI extends JFrame implements ActionListener{
 		if(change){
 			String choice = e.getActionCommand();
 			if (choice.equals("NEW")){
-				NewGameGUI n = new NewGameGUI(pane);
+				NewGameGUI n = new NewGameGUI(pane, this);
 				//pane.setVisible(false);
 				n.setVisible(true);
+				//this.setVisible(false);
 				System.out.println("You pressed the new button");
 			}
 			else if (choice.equals("SAVE")){
 				System.out.println("You pressed the save button");
 			}
 			else if (choice.equals("LOAD")){
-				System.out.println(te1.toString());
+				System.out.println(ado.toString());
 			}else if (choice.equals("QUIT")){
 				dispose();
 			}else if (choice.equals("Spelers aanpassen")){
@@ -383,7 +420,6 @@ public class GUI extends JFrame implements ActionListener{
 					}
 				}
 				int loc = wissels.indexOf(wissel);
-				int loc2 = loc - 1;
 				int box = Integer.parseInt(nm);
 				if(loc != -1){
 					wissels.set(loc, selectie.get(box-1));
@@ -396,8 +432,80 @@ public class GUI extends JFrame implements ActionListener{
 			}
 		}
 	}
+	public static void updateTeam(){
+		selectie = new ArrayList<Player>();
+		wissels = new ArrayList<Player>();
+		
+		if(team.equals("ADO")){
+			te1 = ado;
+		}
+		else if(team.equals("Ajax")){
+			te1 = aja;
+		}
+		else if(team.equals("AZ")){
+			//te1 = aja;
+		}
+		else if(team.equals("Excelsior")){
+			//te1 = aja;
+		}
+		else if(team.equals("FC Dordrecht")){
+			//te1 = aja;
+		}
+		else if(team.equals("FC Groningen")){
+			//te1 = aja;
+		}
+		else if(team.equals("FC Twente")){
+			//te1 = aja;
+		}
+		else if(team.equals("FC Utrecht")){
+			//te1 = aja;
+		}
+		else if(team.equals("Feyenoord")){
+			//te1 = aja;
+		}
+		else if(team.equals("Go Ahead Eagles")){
+			//te1 = aja;
+		}
+		else if(team.equals("Heracles Almelo")){
+			//te1 = aja;
+		}
+		else if(team.equals("NAC Breda")){
+			//te1 = aja;
+		}
+		else if(team.equals("PEC Zwolle")){
+			//te1 = aja;
+		}
+		else if(team.equals("PSV")){
+			//te1 = aja;
+		}
+		else if(team.equals("SC Cambuur")){
+			//te1 = aja;
+		}
+		else if(team.equals("SC Heereveen")){
+			//te1 = aja;
+		}
+		else if(team.equals("Vitesse")){
+			//te1 = aja;
+		}
+		else if(team.equals("Willem II")){
+			//te1 = aja;
+		}
+		
+    	if(!te1.getName().equals("Not Set Yet")){
+	    	for(int i = 0; i < 11; i++){
+	    		selectie.add(te1.get(i));
+	    	}
+	
+	    	for(int i = 0; i < te1.getTeam().size(); i++){
+	    		if(!te1.getTeam().get(i).GetIsActive()){
+	    			wissels.add(te1.getTeam().get(i));
+	    		}
+	    	}
+    	}
+	}
 	
 	public void update(){
+		change = false;
 		jp.removeAll();
 		spelersList1.removeAllItems();
 		spelersList2.removeAllItems();
@@ -506,5 +614,8 @@ public class GUI extends JFrame implements ActionListener{
             jp.add(new JLabel("Offense"));
         }
         jp.add(spelersList11);
+        repaint();
+        revalidate();
+        change = true;
 	}
 }

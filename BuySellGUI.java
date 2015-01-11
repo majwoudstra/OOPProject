@@ -11,6 +11,8 @@ import javax.swing.*;
 public class BuySellGUI extends JFrame implements ActionListener{
     JComboBox<String> teamList = new JComboBox<String>();
     JComboBox<String> spelerList = new JComboBox<String>();
+    private boolean change = true;
+    JButton b3;
 	
 	GridBagLayout k = new GridBagLayout();
 	JPanel pane = new JPanel();
@@ -52,7 +54,7 @@ public class BuySellGUI extends JFrame implements ActionListener{
         pane.add(b2,c);
         b2.addActionListener(this);
         
-    	String[] teams = {"ADO Den Haag", "Ajax", "AZ", "Excelsior", "FC Dordrecht", "FC Groningen", "FC Twente", "FC Utrecht", "Feyenoord", "Go Ahead Eagles", "Heracles Almelo", "NAC Breda", "PEC Zwolle", "PSV", "SC Cambuur", "SC Heereveen", "Vitesse", "Willem II"};
+    	String[] teams = {"ADO", "Ajax", "AZ", "Excelsior", "FC Dordrecht", "FC Groningen", "FC Twente", "FC Utrecht", "Feyenoord", "Go Ahead Eagles", "Heracles Almelo", "NAC Breda", "PEC Zwolle", "PSV", "SC Cambuur", "SC Heereveen", "Vitesse", "Willem II"};
         for(int i = 0; i < teams.length; i++){
         	if(!teams[i].equals(GUI.team))
         		teamList.addItem(teams[i].toString());
@@ -63,6 +65,20 @@ public class BuySellGUI extends JFrame implements ActionListener{
         pane.add(teamList,c);
         teamList.addActionListener(this);
         
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 2;
+        pane.add(spelerList,c);
+        spelerList.addActionListener(this);
+        spelerList.setVisible(false);
+        
+        b3 = new JButton("Buy");
+        c.gridx = 0;
+        c.gridx = 4;
+        c.gridwidth = 2;
+        pane.add(b3,c);
+        b3.addActionListener(this);
+        b3.setVisible(false);
         
         add(pane);
 	}
@@ -75,11 +91,39 @@ public class BuySellGUI extends JFrame implements ActionListener{
 		else if (choice.equals("Decline")){
 			
 		}
-		else{
-			if (e.getID() == 1001){
+		else if(choice.equals("Buy")){
+			int speler = spelerList.getSelectedIndex();
+			
+		}
+		else if (change && e.getSource() == teamList){
+			change = false;
 			String team = teamList.getSelectedItem().toString();
 			
+			Team t1 = getTeam(team);
+			if(t1 != null){
+				spelerList.removeAllItems();
+				for(int i = 0; i < t1.size(); i++){
+					spelerList.addItem(t1.get(i).toStringRug());
+				}
+				spelerList.setVisible(true);
+				b3.setVisible(true);
+				repaint();
+				revalidate();
+			}
+			change = true;
+		}
+		else{
+			System.out.println(spelerList.getSelectedItem());
+		}
+	}
+	
+	public static Team getTeam(String team){
+		Team t1 = null;
+		for(int i = 0; i < GUI.div.Size(); i++){
+			if(GUI.div.get(i).getName().equals(team)){
+				t1 = GUI.div.get(i);
 			}
 		}
+		return t1;
 	}
 }

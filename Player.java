@@ -72,4 +72,8 @@ public class Player {
 		res += "isactive: " + this.GetIsActive() + "\n";
 		return res;
 	}
+	public String toStringRug(){
+		String res = this.playernumber + "- " + this.name + "Off:" + this.offence + " Def: " + this.defence + " Stam:" + this.stamina;
+		return res;
+	}
 }
