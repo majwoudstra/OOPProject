@@ -6,16 +6,18 @@ public class Player {
 	int defence;
 	int stamina;
 	int playernumber;
+	int prijs;
 	
 	boolean isactive;
 
 	public Player(String name, int offence, int defence, int stamina,
-			int playernumber, boolean isactive) {
+			int playernumber, int prijs, boolean isactive) {
 		this.name = name;
 		this.offence = offence;
 		this.defence = defence;
 		this.stamina = stamina;
 		this.playernumber = playernumber;
+		this.prijs = prijs;
 		
 		this.isactive = isactive;
 	}
@@ -38,6 +40,10 @@ public class Player {
 
 	public int GetPlayerNumber() {
 		return this.playernumber;
+	}
+	
+	public int GetPrijs(){
+		return this.prijs;
 	}
 	
 	public boolean GetIsActive(){
@@ -73,7 +79,11 @@ public class Player {
 		return res;
 	}
 	public String toStringRug(){
-		String res = this.playernumber + "- " + this.name + "Off:" + this.offence + " Def: " + this.defence + " Stam:" + this.stamina;
+		String res = this.playernumber + "- " + this.GetName() + "Off:" + this.offence + " Def: " + this.defence + " Stam:" + this.stamina;
+		return res;
+	}
+	public String toStringTransfer(){
+		String res = this.GetName() + " Off: " + this.offence + " Def: " + this.defence + " Stam: " + this.stamina + " Prijs: " + this.prijs;
 		return res;
 	}
 }
