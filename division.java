@@ -2,17 +2,17 @@
 import java.util.ArrayList;
 
 
-public class division {
+public class Division {
 
 	private static ArrayList<Team> division = new ArrayList<Team>();
 	
 	public void add (Team team){
 		division.add(team);
 	}
-	public int Size(){
+	public static int Size(){
 		return division.size();
 	}
-	public Team get(int i){
+	public static Team get(int i){
 		return division.get(i);
 	}
 	

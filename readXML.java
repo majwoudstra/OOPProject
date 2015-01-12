@@ -10,7 +10,6 @@ import org.xml.sax.SAXException;
 
 public class readXML {
 
-	
 	Team Ado = new Team();
 	Team Ajax = new Team();
 	Team PSV = new Team();
@@ -29,7 +28,7 @@ public class readXML {
 	Team NAC = new Team();
 	Team PEC = new Team();
 	Team WillemII = new Team();
-	
+
 	// No generics
 	Team res;
 	Document dom;
@@ -61,7 +60,7 @@ public class readXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			// parse using builder to get DOM representation of the XML file
-			dom = db.parse("save.xml");
+			dom = db.parse("XML.xml");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -75,23 +74,24 @@ public class readXML {
 	private void parseDocument() {
 		// get the root elememt
 		Element docEle = dom.getDocumentElement();
-
+		Team res;
+		String name = "";
 		// get a nodelist of <employee> elements
-		NodeList nl = docEle.getElementsByTagName("team");
+		NodeList nl = docEle.getElementsByTagName("Team");
 		if (nl != null && nl.getLength() > 0) {
 			for (int i = 0; i < nl.getLength(); i++) {
 
 				// get the employee element
 				Element el = (Element) nl.item(i);
-				String name = el.getAttribute("name");
+				name = getTextValue(el, "Name");
 				// get the Employee object
-				
-				Team res = new Team();
+
+				res = new Team();
 				res = AddToTeam(el);
 
 				// add it to list
-				switch (name){
-				case "Ado":
+				switch (name) {
+				case "Ado Den Haag":
 					Ado = res;
 					break;
 				case "Ajax":
@@ -103,56 +103,53 @@ public class readXML {
 				case "Excelsior":
 					Excelsior = res;
 					break;
-				case "Dordrecht":
+				case "FC Dordrecht":
 					Dordrecht = res;
 					break;
-				case "Groningen":
+				case "FC Groningen":
 					Groningen = res;
 					break;
-				case "Twente":
+				case "FC Twente":
 					Twente = res;
 					break;
-				case "Utrecht":
+				case "FC Utrecht":
 					Utrecht = res;
 					break;
 				case "Feyenoord":
 					Feyenoord = res;
 					break;
-				case "GoAhead":
+				case "Go Ahead Eagles":
 					GoAhead = res;
 					break;
-				case "Heracles":
+				case "Heracles Almelo":
 					Heracles = res;
 					break;
-				case "NAC":
+				case "NAC Breda":
 					NAC = res;
 					break;
-				case "PEC":
+				case "PEC Zwolle":
 					PEC = res;
 					break;
 				case "PSV":
 					PSV = res;
 					break;
-				case "Cambuur":
+				case "SC Cambuur":
 					Cambuur = res;
 					break;
-				case "Heerenveen":
+				case "SC Heerenveen":
 					Heerenveen = res;
 					break;
 				case "Vitesse":
 					Vitesse = res;
 					break;
-				case "WillemII":
+				case "Willem II":
 					WillemII = res;
 					break;
-					
-				
-					
-				}
+
 				}
 			}
 		}
-	
+	}
 
 	/**
 	 * I take an employee element and read the values in, create an Employee
@@ -162,16 +159,17 @@ public class readXML {
 	 * @return
 	 */
 	private Player getPlayer(Element PlayEl) {
-		String name = PlayEl.getAttribute("name");
-		int offence = getIntValue(PlayEl, "offence");
-		int defence = getIntValue(PlayEl, "defence");
-		int stamina = getIntValue(PlayEl, "stamina");
-		int playernumber = getIntValue(PlayEl, "playernumber");
+		String firstname = getTextValue(PlayEl, "Voornaam");
+		String lastname = getTextValue(PlayEl, "Achternaam");
+		int offence = getIntValue(PlayEl, "Aanval");
+		int defence = getIntValue(PlayEl, "Verdediging");
+		int stamina = getIntValue(PlayEl, "Uithoudingsvermogen");
+		int playernumber = getIntValue(PlayEl, "Rugnummer");
 		
-		boolean isactive = Boolean
-				.parseBoolean(getTextValue(PlayEl, "isactive"));
-		Player e = new Player(name, offence, defence, stamina, playernumber,
-				 isactive);
+		boolean isactive = Boolean.parseBoolean(getTextValue(PlayEl,
+				"Beschikbaarheid"));
+		int price = getIntValue(PlayEl, "Prijs");
+		Player e = new Player(firstname, lastname, offence, defence, stamina, playernumber, isactive, price);
 		return e;
 	}
 
@@ -209,39 +207,38 @@ public class readXML {
 
 	private Team AddToTeam(Element el) {
 		Team res = new Team();
-		NodeList nl = el.getElementsByTagName("player");
+		NodeList nl = el.getElementsByTagName("Speler");
 		if (nl != null && nl.getLength() > 0) {
 			for (int i = 0; i < nl.getLength(); i++) {
 				Element ez = (Element) nl.item(i);
 				Player e = getPlayer(ez);
-				
+
 				res.add(e);
-					
-				}
-				
+
 			}
-		return res;
+
 		}
-	private void FillDivision(Division in){
-		in.add(Ado); //0
-		in.add(Ajax); //1
-		in.add(AZ); //2
-		in.add(Cambuur); //3
-		in.add(Dordrecht); //4
-		in.add(Excelsior); //5
-		in.add(Feyenoord); //6
-		in.add(GoAhead); //7
-		in.add(Groningen); //8
-		in.add(Heerenveen); //9
-		in.add(Heracles); //10
-		in.add(NAC); //11
-		in.add(PEC); //12
-		in.add(PSV); //13
-		in.add(Twente); //14
-		in.add(Utrecht); //15
-		in.add(Vitesse); //16
-		in.add(WillemII); //17
-	}
+		return res;
 	}
 
-
+	private void FillDivision(Division in) {
+		in.add(Ado); // 0
+		in.add(Ajax); // 1
+		in.add(AZ); // 2
+		in.add(Cambuur); // 3
+		in.add(Dordrecht); // 4
+		in.add(Excelsior); // 5
+		in.add(Feyenoord); // 6
+		in.add(GoAhead); // 7
+		in.add(Groningen); // 8
+		in.add(Heerenveen); // 9
+		in.add(Heracles); // 10
+		in.add(NAC); // 11
+		in.add(PEC); // 12
+		in.add(PSV); // 13
+		in.add(Twente); // 14
+		in.add(Utrecht); // 15
+		in.add(Vitesse); // 16
+		in.add(WillemII); // 17
+	}
+}

@@ -7,8 +7,10 @@ public class TestReading implements ReadAndWriteCombiner{
 		readXML test = new readXML();
 		
 		test.runExample(res);
-		for (int i = 0; i< res.get(0).size(); i++) {
-			
+		for (int i = 0; i< res.Size(); i++) {
+			for (int ii = 0; i < res.get(i).size(); ii++){
+				System.out.println(res.get(i).get(ii).toString());
+			}
 		}
 		writeXMLtest tess = new writeXMLtest();
 		tess.runExample(res);

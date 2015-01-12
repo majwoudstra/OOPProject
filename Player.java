@@ -1,29 +1,32 @@
 
 public class Player {
 
-	String name;
+	String firstname;
+	String lastname;
 	int offence;
 	int defence;
 	int stamina;
 	int playernumber;
-	int prijs;
-	
+	int price;
 	boolean isactive;
 
-	public Player(String name, int offence, int defence, int stamina,
-			int playernumber, int prijs, boolean isactive) {
-		this.name = name;
+	public Player(String firstname, String lastname, int offence, int defence, int stamina,
+			int playernumber, boolean isactive, int price) {
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.offence = offence;
 		this.defence = defence;
 		this.stamina = stamina;
 		this.playernumber = playernumber;
-		this.prijs = prijs;
-		
 		this.isactive = isactive;
+		this.price = price;
 	}
 
-	public String GetName() {
-		return this.name;
+	public String GetFirstName() {
+		return this.firstname;
+	}
+	public String GetLastName(){
+		return this.lastname;
 	}
 
 	public int GetOffence() {
@@ -42,15 +45,17 @@ public class Player {
 		return this.playernumber;
 	}
 	
-	public int GetPrijs(){
-		return this.prijs;
-	}
-	
 	public boolean GetIsActive(){
 		return this.isactive;
 	}
-	public void setName(String name){
-		this.name = name;
+	public int GetPrice(){
+		return this.price;
+	}
+	public void setFirstName(String firstname){
+		this.firstname = firstname;
+	}
+	public void setLastName(String lastname){
+		this.lastname = lastname;
 	}
 	public void setOffence(int offence){
 		this.offence = offence;
@@ -68,22 +73,19 @@ public class Player {
 	public void setIsActive(boolean isactive){
 		this.isactive = isactive;
 	}
+	
+	public void setPrice(int price){
+		this.price = price;
+	}
 	public String toString(){
 		String res = "";
-		res += "name: " + this.GetName() + "\n";
+		res += "name: " + this.GetFirstName() + " " + this.GetLastName() + "\n";
 		res += "offence: " + this.GetOffence() + "\n";
 		res += "defence: " + this.GetDefence() + "\n";
 		res += "stamina: " + this.GetStamina() + "\n";
 		res += "playernumber: " + this.GetPlayerNumber() + "\n";
 		res += "isactive: " + this.GetIsActive() + "\n";
-		return res;
-	}
-	public String toStringRug(){
-		String res = this.playernumber + "- " + this.GetName() + "Off:" + this.offence + " Def: " + this.defence + " Stam:" + this.stamina;
-		return res;
-	}
-	public String toStringTransfer(){
-		String res = this.GetName() + " Off: " + this.offence + " Def: " + this.defence + " Stam: " + this.stamina + " Prijs: " + this.prijs;
+		res += "price: " + this.GetPrice() + "\n";
 		return res;
 	}
 }
