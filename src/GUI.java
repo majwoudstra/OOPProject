@@ -1,5 +1,4 @@
 import java.awt.*;
-
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -9,8 +8,8 @@ import javax.swing.*;
 public class GUI extends JFrame implements ActionListener{
 	
 	static Division div = new Division();
-	public static Team te1 = new Team("Not Set Yet");
-	static Team ado = new Team("ADO", 20000, true);
+	public static Team te1 = new Team("Not Set Yet", 200000, true);
+	static Team ado = new Team("ADO", 20000, false);
 	static Team aja = new Team("Ajax", 10000, false);
 	int i = 0;
 	
@@ -79,8 +78,6 @@ public class GUI extends JFrame implements ActionListener{
     }
 
     private final void initUI() {
-    	
-
     	pane.setLayout(k);
     	GridBagConstraints c = new GridBagConstraints();
     	c.fill = GridBagConstraints.BOTH;

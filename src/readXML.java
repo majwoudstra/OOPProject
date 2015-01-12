@@ -44,10 +44,10 @@ public class readXML {
 		parseXmlFile();
 
 		// get each employee element and create a Employee object
-		parseDocument();
+		parseDocument(in);
 
 		// Iterate through the list and print the data
-		FillDivision(in);
+		
 	}
 
 	private void parseXmlFile() {
@@ -60,7 +60,7 @@ public class readXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			// parse using builder to get DOM representation of the XML file
-			dom = db.parse("XML.xml");
+			dom = db.parse("src/XML3.xml");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -71,7 +71,7 @@ public class readXML {
 		}
 	}
 
-	private void parseDocument() {
+	private void parseDocument(Division in) {
 		// get the root elememt
 		Element docEle = dom.getDocumentElement();
 		Team res;
@@ -93,63 +93,8 @@ public class readXML {
 				res = AddToTeam(el, name, budget, pccontrolled);
 
 				// add it to list
-				switch (name) {
-				case "Ado Den Haag":
-					Ado = res;
-					break;
-				case "Ajax":
-					Ajax = res;
-					break;
-				case "AZ":
-					AZ = res;
-					break;
-				case "Excelsior":
-					Excelsior = res;
-					break;
-				case "FC Dordrecht":
-					Dordrecht = res;
-					break;
-				case "FC Groningen":
-					Groningen = res;
-					break;
-				case "FC Twente":
-					Twente = res;
-					break;
-				case "FC Utrecht":
-					Utrecht = res;
-					break;
-				case "Feyenoord":
-					Feyenoord = res;
-					break;
-				case "Go Ahead Eagles":
-					GoAhead = res;
-					break;
-				case "Heracles Almelo":
-					Heracles = res;
-					break;
-				case "NAC Breda":
-					NAC = res;
-					break;
-				case "PEC Zwolle":
-					PEC = res;
-					break;
-				case "PSV":
-					PSV = res;
-					break;
-				case "SC Cambuur":
-					Cambuur = res;
-					break;
-				case "SC Heerenveen":
-					Heerenveen = res;
-					break;
-				case "Vitesse":
-					Vitesse = res;
-					break;
-				case "Willem II":
-					WillemII = res;
-					break;
-
-				}
+				
+				in.add(res);
 			}
 		}
 	}
@@ -224,24 +169,5 @@ public class readXML {
 		return res;
 	}
 
-	private void FillDivision(Division in) {
-		in.add(Ado); // 0
-		in.add(Ajax); // 1
-		in.add(AZ); // 2
-		in.add(Cambuur); // 3
-		in.add(Dordrecht); // 4
-		in.add(Excelsior); // 5
-		in.add(Feyenoord); // 6
-		in.add(GoAhead); // 7
-		in.add(Groningen); // 8
-		in.add(Heerenveen); // 9
-		in.add(Heracles); // 10
-		in.add(NAC); // 11
-		in.add(PEC); // 12
-		in.add(PSV); // 13
-		in.add(Twente); // 14
-		in.add(Utrecht); // 15
-		in.add(Vitesse); // 16
-		in.add(WillemII); // 17
-	}
+	
 }
