@@ -14,39 +14,39 @@ public class GUI extends JFrame implements ActionListener{
 	static Team aja = new Team("Ajax");
 	int i = 0;
 	
-	static Player p1 = new Player("1", 10, 10, 10, 1, 100000, true);
-	static Player p2 = new Player("2", 10, 10, 10, 2,100000, true);
-	static Player p3 = new Player("3", 10, 10, 10, 3,100000, true);
-	static Player p4 = new Player("4", 10, 10, 10, 4,100000, true);
-	static Player p5 = new Player("5", 10, 10, 10, 5,100000, true);
-	static Player p6 = new Player("6", 10, 10, 10, 6,100000, true);
-	static Player p7 = new Player("7", 10, 10, 10, 7,100000, true);
-	static Player p8 = new Player("8", 10, 10, 10, 8,100000, true);
-	static Player p9 = new Player("9", 10, 10, 10, 9,100000, true);
-	static Player p10 = new Player("10", 10, 10, 10, 10,100000, true);
-	static Player p11 = new Player("11", 10, 10, 10, 11,100000, true);
-	static Player p12 = new Player("12", 10, 10, 10, 12,100000,false);
-	static Player p13 = new Player("13", 10, 10, 10, 13,100000, false);
-	static Player p14 = new Player("14", 10, 10, 10, 14,100000, false);
-	static Player p15 = new Player("15", 10, 10, 10, 15,100000, false);
-	static Player p16 = new Player("16", 10, 10, 10, 16,100000, false);
-	static Player p17 = new Player("17", 10, 10, 10, 17,100000, false);
-	static Player p18 = new Player("18", 10, 10, 10, 18,100000, false);
-	static Player p19 = new Player("19", 10, 10, 10, 19,100000, false);
-	static Player p20 = new Player("20", 10, 10, 10, 20,100000, false);
-	static Player p21 = new Player("21", 10, 10, 10, 21,100000, false);
+	static Player p1 = new Player("1","1", 10, 10, 10, 1, 100000, true);
+	static Player p2 = new Player("2", "2", 10, 10, 10, 2,100000, true);
+	static Player p3 = new Player("3","3", 10, 10, 10, 3,100000, true);
+	static Player p4 = new Player("4","4", 10, 10, 10, 4,100000, true);
+	static Player p5 = new Player("5","5", 10, 10, 10, 5,100000, true);
+	static Player p6 = new Player("6","6", 10, 10, 10, 6,100000, true);
+	static Player p7 = new Player("7","7", 10, 10, 10, 7,100000, true);
+	static Player p8 = new Player("8","8", 10, 10, 10, 8,100000, true);
+	static Player p9 = new Player("9","9", 10, 10, 10, 9,100000, true);
+	static Player p10 = new Player("10","9", 10, 10, 10, 10,100000, true);
+	static Player p11 = new Player("11","11", 10, 10, 10, 11,100000, true);
+	static Player p12 = new Player("12","12", 10, 10, 10, 12,100000,false);
+	static Player p13 = new Player("13","13", 10, 10, 10, 13,100000, false);
+	static Player p14 = new Player("14","14", 10, 10, 10, 14,100000, false);
+	static Player p15 = new Player("15","15", 10, 10, 10, 15,100000, false);
+	static Player p16 = new Player("16","16", 10, 10, 10, 16,100000, false);
+	static Player p17 = new Player("17","17", 10, 10, 10, 17,100000, false);
+	static Player p18 = new Player("18","18", 10, 10, 10, 18,100000, false);
+	static Player p19 = new Player("19","19", 10, 10, 10, 19,100000, false);
+	static Player p20 = new Player("20","20", 10, 10, 10, 20,100000, false);
+	static Player p21 = new Player("21","21", 10, 10, 10, 21,100000, false);
 	
-	static Player a1 = new Player("Ajax1", 10, 10,10, 1,300000, true);
-	static Player a2 = new Player("Ajax2", 10, 10,10, 2,200000, true);
-	static Player a3 = new Player("Ajax3", 10, 10,10, 3,100000, true);
-	static Player a4 = new Player("Ajax4", 10, 10,10, 4,100000, true);
-	static Player a5 = new Player("Ajax5", 10, 10,10, 5,100000, true);
-	static Player a6 = new Player("Ajax6", 10, 10,10, 6,100000, true);
-	static Player a7 = new Player("Ajax7", 10, 10,10, 7,100000, true);
-	static Player a8 = new Player("Ajax8", 10, 10,10, 8,100000, true);
-	static Player a9 = new Player("Ajax9", 10, 10,10, 9,100000, true);
-	static Player a10 = new Player("Ajax10", 10, 10,10, 10, 100000,true);
-	static Player a11 = new Player("Ajax11", 10, 10,10, 11,100000, true);
+	static Player a1 = new Player("Ajax1", "1", 10, 10,10, 1,300000, true);
+	static Player a2 = new Player("Ajax2", "2", 10, 10,10, 2,200000, true);
+	static Player a3 = new Player("Ajax3", "3", 10, 10,10, 3,100000, true);
+	static Player a4 = new Player("Ajax4", "4", 10,10,10, 4,100000, true);
+	static Player a5 = new Player("Ajax5", "5", 10, 10,10, 5,100000, true);
+	static Player a6 = new Player("Ajax6", "6", 10, 10,10, 6,100000, true);
+	static Player a7 = new Player("Ajax7", "7", 10, 10,10, 7,100000, true);
+	static Player a8 = new Player("Ajax8", "8", 10, 10,10, 8,100000, true);
+	static Player a9 = new Player("Ajax9", "9", 10, 10,10, 9,100000, true);
+	static Player a10 = new Player("Ajax10", "10", 10, 10,10, 10, 100000,true);
+	static Player a11 = new Player("Ajax11", "11", 10, 10,10, 11,100000, true);
 	
 	static ArrayList<Player> selectie = new ArrayList<Player>();
 	static ArrayList<Player> wissels = new ArrayList<Player>();
@@ -357,7 +357,7 @@ public class GUI extends JFrame implements ActionListener{
     	}
     	else{
     		for(int i = 0; i < 11; i++){
-    			selectie.add(new Player("Blank", 10,10,10,(i+1),100000, true));
+    			selectie.add(new Player("Blank", "Blank", 10,10,10,(i+1),100000, true));
     		}
     	}
     	
