@@ -11,7 +11,7 @@ public class Player {
 	boolean isactive;
 
 	public Player(String firstname, String lastname, int offence, int defence, int stamina,
-			int playernumber, boolean isactive, int price) {
+			int playernumber, int price, boolean isactive) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.offence = offence;

@@ -5,6 +5,11 @@ import java.util.Iterator;
 public class Team {
 
 	private ArrayList<Player> Team = new ArrayList<Player>();
+	private String name;
+	
+	public Team(String nm){
+		name = nm;
+	}
 
 	public void add(Player player) {
 		Team.add(player);
@@ -14,7 +19,9 @@ public class Team {
 		return Team.size();
 	}
 
-	
+	public String getName(){
+		return name;
+	}
 	
 
 	public Player get(int i) {
