@@ -34,13 +34,13 @@ public class writeXMLtest {
 
 	}
 
-	private void createDOMTree(Division in) {
+	private void createDOMTree(division in) {
 		Element rootEle = dom.createElement("Division");
 		dom.appendChild(rootEle);
 
-		for (int i = 0; i < Division.Size(); i++) {
+		for (int i = 0; i < division.Size(); i++) {
 
-			Element teamEle = createTeamElement(Division.get(i));
+			Element teamEle = createTeamElement(division.get(i));
 			Text name;
 			switch (i) {
 			case 0:
@@ -190,7 +190,7 @@ public class writeXMLtest {
 		}
 	}
 
-	public void runExample(Division in) {
+	public void runExample(division in) {
 		System.out.println("Started .. ");
 		createDOMTree(in);
 		printToFile();

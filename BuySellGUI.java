@@ -118,8 +118,8 @@ public class BuySellGUI extends JFrame implements ActionListener{
 			String team = teamList.getSelectedItem().toString();
 			Team t1 = getTeam(team);
 			Player p1 = t1.get(speler);
-			if(GUI.te1.getBudget() >= p1.GetPrijs()){
-				GUI.te1.setBudget((GUI.te1.getBudget() - p1.GetPrijs()));
+			if(GUI.te1.getBudget() >= p1.GetPrice()){
+				GUI.te1.setBudget((GUI.te1.getBudget() - p1.GetPrice()));
 				GUI.te1.buy(p1);
 				getTeam(team).removePlayer(speler);
 			}

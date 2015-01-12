@@ -88,4 +88,15 @@ public class Player {
 		res += "price: " + this.GetPrice() + "\n";
 		return res;
 	}
+	
+	public String toStringRug(){
+		String res = this.playernumber + "- " + this.GetLastName() + "Off:" + this.offence + " Def: " + this.defence + " Stam:" + this.stamina;
+		return res;
+	}
+	
+	public String toStringTransfer(){
+		String res = this.GetLastName() + " Off: " + this.offence + " Def: " + this.defence + " Stam: " + this.stamina + " Prijs: " + this.price;
+		return res;
+	}
+
 }

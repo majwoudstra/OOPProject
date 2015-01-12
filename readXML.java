@@ -38,7 +38,7 @@ public class readXML {
 		res = new Team();
 	}
 
-	public void runExample(Division in) {
+	public void runExample(division in) {
 
 		// parse the xml file and get the dom object
 		parseXmlFile();
@@ -169,7 +169,7 @@ public class readXML {
 		boolean isactive = Boolean.parseBoolean(getTextValue(PlayEl,
 				"Beschikbaarheid"));
 		int price = getIntValue(PlayEl, "Prijs");
-		Player e = new Player(firstname, lastname, offence, defence, stamina, playernumber, isactive, price);
+		Player e = new Player(firstname, lastname, offence, defence, stamina, playernumber, price, isactive);
 		return e;
 	}
 
@@ -221,7 +221,7 @@ public class readXML {
 		return res;
 	}
 
-	private void FillDivision(Division in) {
+	private void FillDivision(division in) {
 		in.add(Ado); // 0
 		in.add(Ajax); // 1
 		in.add(AZ); // 2
