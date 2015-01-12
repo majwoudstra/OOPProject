@@ -10,24 +10,24 @@ import org.xml.sax.SAXException;
 
 public class readXML {
 
-	Team Ado = new Team();
-	Team Ajax = new Team();
-	Team PSV = new Team();
-	Team AZ = new Team();
-	Team Feyenoord = new Team();
-	Team Vitesse = new Team();
-	Team Cambuur = new Team();
-	Team GoAhead = new Team();
-	Team Heerenveen = new Team();
-	Team Excelsior = new Team();
-	Team Dordrecht = new Team();
-	Team Groningen = new Team();
-	Team Twente = new Team();
-	Team Utrecht = new Team();
-	Team Heracles = new Team();
-	Team NAC = new Team();
-	Team PEC = new Team();
-	Team WillemII = new Team();
+	Team Ado = new Team("", 0, false);
+	Team Ajax = new Team("", 0, false);
+	Team PSV = new Team("", 0, false);
+	Team AZ = new Team("", 0, false);
+	Team Feyenoord = new Team("", 0, false);
+	Team Vitesse = new Team("", 0, false);
+	Team Cambuur = new Team("", 0, false);
+	Team GoAhead = new Team("", 0, false);
+	Team Heerenveen = new Team("", 0, false);
+	Team Excelsior = new Team("", 0, false);
+	Team Dordrecht = new Team("", 0, false);
+	Team Groningen = new Team("", 0, false);
+	Team Twente = new Team("", 0, false);
+	Team Utrecht = new Team("", 0, false);
+	Team Heracles = new Team("", 0, false);
+	Team NAC = new Team("", 0, false);
+	Team PEC = new Team("", 0, false);
+	Team WillemII = new Team("", 0, false);
 
 	// No generics
 	Team res;
@@ -35,19 +35,19 @@ public class readXML {
 
 	public readXML() {
 		// create a list to hold the employee objects
-		res = new Team();
+		res = new Team("", 0, false);
 	}
 
-	public void runExample(division in) {
+	public void runExample(Division in) {
 
 		// parse the xml file and get the dom object
 		parseXmlFile();
 
 		// get each employee element and create a Employee object
-		parseDocument();
+		parseDocument(in);
 
 		// Iterate through the list and print the data
-		FillDivision(in);
+		
 	}
 
 	private void parseXmlFile() {
@@ -71,11 +71,13 @@ public class readXML {
 		}
 	}
 
-	private void parseDocument() {
+	private void parseDocument(Division in) {
 		// get the root elememt
 		Element docEle = dom.getDocumentElement();
 		Team res;
 		String name = "";
+		int budget = 0;
+		boolean pccontrolled;
 		// get a nodelist of <employee> elements
 		NodeList nl = docEle.getElementsByTagName("Team");
 		if (nl != null && nl.getLength() > 0) {
@@ -84,69 +86,15 @@ public class readXML {
 				// get the employee element
 				Element el = (Element) nl.item(i);
 				name = getTextValue(el, "Name");
-				// get the Employee object
+				budget = getIntValue(el,"Budget");
+				pccontrolled = Boolean.parseBoolean(getTextValue(el, "Spelergestuurd"));
 
-				res = new Team();
-				res = AddToTeam(el);
+				res = new Team(name, budget, pccontrolled);
+				res = AddToTeam(el, name, budget, pccontrolled);
 
 				// add it to list
-				switch (name) {
-				case "Ado Den Haag":
-					Ado = res;
-					break;
-				case "Ajax":
-					Ajax = res;
-					break;
-				case "AZ":
-					AZ = res;
-					break;
-				case "Excelsior":
-					Excelsior = res;
-					break;
-				case "FC Dordrecht":
-					Dordrecht = res;
-					break;
-				case "FC Groningen":
-					Groningen = res;
-					break;
-				case "FC Twente":
-					Twente = res;
-					break;
-				case "FC Utrecht":
-					Utrecht = res;
-					break;
-				case "Feyenoord":
-					Feyenoord = res;
-					break;
-				case "Go Ahead Eagles":
-					GoAhead = res;
-					break;
-				case "Heracles Almelo":
-					Heracles = res;
-					break;
-				case "NAC Breda":
-					NAC = res;
-					break;
-				case "PEC Zwolle":
-					PEC = res;
-					break;
-				case "PSV":
-					PSV = res;
-					break;
-				case "SC Cambuur":
-					Cambuur = res;
-					break;
-				case "SC Heerenveen":
-					Heerenveen = res;
-					break;
-				case "Vitesse":
-					Vitesse = res;
-					break;
-				case "Willem II":
-					WillemII = res;
-					break;
-
-				}
+				
+				in.add(res);
 			}
 		}
 	}
@@ -205,8 +153,8 @@ public class readXML {
 		return Integer.parseInt(getTextValue(ele, tagName));
 	}
 
-	private Team AddToTeam(Element el) {
-		Team res = new Team();
+	private Team AddToTeam(Element el, String name, int budget, boolean controlled) {
+		Team res = new Team(name, budget, controlled);
 		NodeList nl = el.getElementsByTagName("Speler");
 		if (nl != null && nl.getLength() > 0) {
 			for (int i = 0; i < nl.getLength(); i++) {
@@ -221,24 +169,5 @@ public class readXML {
 		return res;
 	}
 
-	private void FillDivision(division in) {
-		in.add(Ado); // 0
-		in.add(Ajax); // 1
-		in.add(AZ); // 2
-		in.add(Cambuur); // 3
-		in.add(Dordrecht); // 4
-		in.add(Excelsior); // 5
-		in.add(Feyenoord); // 6
-		in.add(GoAhead); // 7
-		in.add(Groningen); // 8
-		in.add(Heerenveen); // 9
-		in.add(Heracles); // 10
-		in.add(NAC); // 11
-		in.add(PEC); // 12
-		in.add(PSV); // 13
-		in.add(Twente); // 14
-		in.add(Utrecht); // 15
-		in.add(Vitesse); // 16
-		in.add(WillemII); // 17
-	}
+	
 }

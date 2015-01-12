@@ -14,7 +14,7 @@ import org.w3c.dom.Text;
 
 @SuppressWarnings("deprecation")
 public class writeXMLtest {
-	Team res = new Team();
+	Team res = new Team("", 0, false);
 	Document dom;
 
 	private void createDocument() {
@@ -34,88 +34,14 @@ public class writeXMLtest {
 
 	}
 
-	private void createDOMTree(division in) {
+	private void createDOMTree(Division in) {
 		Element rootEle = dom.createElement("Division");
 		dom.appendChild(rootEle);
 
-		for (int i = 0; i < division.Size(); i++) {
+		for (int i = 0; i < Division.Size(); i++) {
 
-			Element teamEle = createTeamElement(division.get(i));
-			Text name;
-			switch (i) {
-			case 0:
-				name = dom.createTextNode("Ado Den Haag");
-				teamEle.appendChild(name);
-				break;
-			case 1:
-				name = dom.createTextNode("Ajax");
-				teamEle.appendChild(name);
-				break;
-			case 2:
-				name = dom.createTextNode("AZ");
-				teamEle.appendChild(name);
-				break;
-			case 3:
-				name = dom.createTextNode("SC Cambuur");
-				teamEle.appendChild(name);
-				break;
-			case 4:
-				name = dom.createTextNode("FC Dordrecht");
-				teamEle.appendChild(name);
-				break;
-			case 5:
-				name = dom.createTextNode("Excelsior");
-				teamEle.appendChild(name);
-				break;
-			case 6:
-				name = dom.createTextNode("Feyenoord");
-				teamEle.appendChild(name);
-				break;
-			case 7:
-				name = dom.createTextNode("Go Ahead Eagles");
-				teamEle.appendChild(name);
-				break;
-			case 8:
-				name = dom.createTextNode("FC Groningen");
-				teamEle.appendChild(name);
-				break;
-			case 9:
-				name = dom.createTextNode("SC Heerenveen");
-				teamEle.appendChild(name);
-				break;
-			case 10:
-				name = dom.createTextNode("Heracles Almelo");
-				teamEle.appendChild(name);
-				break;
-			case 11:
-				name = dom.createTextNode("NAC Breda");
-				teamEle.appendChild(name);
-				break;
-			case 12:
-				name = dom.createTextNode("PEC Zwolle");
-				teamEle.appendChild(name);
-				break;
-			case 13:
-				name = dom.createTextNode("PSV");
-				teamEle.appendChild(name);
-				break;
-			case 14:
-				name = dom.createTextNode("FC Twente");
-				teamEle.appendChild(name);
-				break;
-			case 15:
-				name = dom.createTextNode("FC Utrecht");
-				teamEle.appendChild(name);
-				break;
-			case 16:
-				name = dom.createTextNode("Vitesse");
-				teamEle.appendChild(name);
-				break;
-			case 17:
-				name = dom.createTextNode("Willem II");
-				teamEle.appendChild(name);
-				break;
-			}
+			Element teamEle = createTeamElement(Division.get(i));
+			
 			rootEle.appendChild(teamEle);
 		}
 
@@ -179,7 +105,7 @@ public class writeXMLtest {
 			// to generate output to console use this serializer
 			// XMLSerializer serializer = new XMLSerializer(System.out, format);
 
-			FileOutputStream out = new FileOutputStream(new File("XML2.xml"));
+			FileOutputStream out = new FileOutputStream(new File("XML3.xml"));
 
 			XMLSerializer serializer = new XMLSerializer(out, format);
 
@@ -190,7 +116,7 @@ public class writeXMLtest {
 		}
 	}
 
-	public void runExample(division in) {
+	public void runExample(Division in) {
 		System.out.println("Started .. ");
 		createDOMTree(in);
 		printToFile();
@@ -204,6 +130,23 @@ public class writeXMLtest {
 
 	private Element createTeamElement(Team in) {
 		Element teamEle = dom.createElement("Team");
+		
+		Element nameEle = dom.createElement("Name");
+		Text nameText = dom.createTextNode(in.getName());
+		nameEle.appendChild(nameText);
+		
+		Element budgetEle = dom.createElement("Budget");
+		Text budgetText = dom.createTextNode(Integer.toString(in.getBudget()));
+		budgetEle.appendChild(budgetText);
+		
+		Element controlledEle = dom.createElement("Spelergestuurd");
+		Text controlledText = dom.createTextNode(String.valueOf(in.GetPcControlled()));
+		controlledEle.appendChild(controlledText);
+		
+		teamEle.appendChild(nameEle);
+		teamEle.appendChild(budgetEle);
+		teamEle.appendChild(controlledEle);
+		
 		for (int i = 0; i < in.size(); i++) {
 			Element playEle = createPlayerElement(in.get(i));
 			teamEle.appendChild(playEle);
