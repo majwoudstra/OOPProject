@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -7,10 +8,10 @@ import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener{
 	
-	static Division div = new Division();
-	public static Team te1 = new Team("Not Set Yet", 200000, true);
-	static Team ado = new Team("ADO", 20000, false);
-	static Team aja = new Team("Ajax", 10000, false);
+	static division div = new division();
+	public static Team te1 = new Team("Not Set Yet", 0, false);
+	static Team ado = new Team("Ado", 20000, true);
+	static Team aja = new Team("Ajax", 20000, false);
 	int i = 0;
 	
 	static Player p1 = new Player("1","1", 10, 10, 10, 1, 100000, true);
@@ -78,6 +79,8 @@ public class GUI extends JFrame implements ActionListener{
     }
 
     private final void initUI() {
+    	
+
     	pane.setLayout(k);
     	GridBagConstraints c = new GridBagConstraints();
     	c.fill = GridBagConstraints.BOTH;

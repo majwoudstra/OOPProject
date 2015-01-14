@@ -6,14 +6,15 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import com.sun.org.apache.xml.internal.serialize.*;
+import org.apache.xml.serialize.OutputFormat;
+import org.apache.xml.serialize.XMLSerializer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
 @SuppressWarnings("deprecation")
 public class writeXMLtest {
-	Team res = new Team("", 0, false);
+	Team res = new Team("", 0, true);
 	Document dom;
 
 	private void createDocument() {
@@ -33,13 +34,13 @@ public class writeXMLtest {
 
 	}
 
-	private void createDOMTree(Division in) {
+	private void createDOMTree(division in) {
 		Element rootEle = dom.createElement("Division");
 		dom.appendChild(rootEle);
 
-		for (int i = 0; i < Division.Size(); i++) {
+		for (int i = 0; i < division.Size(); i++) {
 
-			Element teamEle = createTeamElement(Division.get(i));
+			Element teamEle = createTeamElement(division.get(i));
 			
 			rootEle.appendChild(teamEle);
 		}
@@ -104,7 +105,7 @@ public class writeXMLtest {
 			// to generate output to console use this serializer
 			// XMLSerializer serializer = new XMLSerializer(System.out, format);
 
-			FileOutputStream out = new FileOutputStream(new File("XML2.xml"));
+			FileOutputStream out = new FileOutputStream(new File("XML3.xml"));
 
 			XMLSerializer serializer = new XMLSerializer(out, format);
 
@@ -115,7 +116,7 @@ public class writeXMLtest {
 		}
 	}
 
-	public void runExample(Division in) {
+	public void runExample(division in) {
 		System.out.println("Started .. ");
 		createDOMTree(in);
 		printToFile();

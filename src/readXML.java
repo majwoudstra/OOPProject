@@ -10,24 +10,7 @@ import org.xml.sax.SAXException;
 
 public class readXML {
 
-	Team Ado = new Team("", 0, false);
-	Team Ajax = new Team("", 0, false);
-	Team PSV = new Team("", 0, false);
-	Team AZ = new Team("", 0, false);
-	Team Feyenoord = new Team("", 0, false);
-	Team Vitesse = new Team("", 0, false);
-	Team Cambuur = new Team("", 0, false);
-	Team GoAhead = new Team("", 0, false);
-	Team Heerenveen = new Team("", 0, false);
-	Team Excelsior = new Team("", 0, false);
-	Team Dordrecht = new Team("", 0, false);
-	Team Groningen = new Team("", 0, false);
-	Team Twente = new Team("", 0, false);
-	Team Utrecht = new Team("", 0, false);
-	Team Heracles = new Team("", 0, false);
-	Team NAC = new Team("", 0, false);
-	Team PEC = new Team("", 0, false);
-	Team WillemII = new Team("", 0, false);
+
 
 	// No generics
 	Team res;
@@ -35,10 +18,10 @@ public class readXML {
 
 	public readXML() {
 		// create a list to hold the employee objects
-		res = new Team("", 0, false);
+		 res = new Team("", 0, true);
 	}
 
-	public void runExample(Division in) {
+	public void runExample(division in) {
 
 		// parse the xml file and get the dom object
 		parseXmlFile();
@@ -60,7 +43,7 @@ public class readXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			// parse using builder to get DOM representation of the XML file
-			dom = db.parse("src/XML3.xml");
+			dom = db.parse("XML.xml");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -71,7 +54,7 @@ public class readXML {
 		}
 	}
 
-	private void parseDocument(Division in) {
+	private void parseDocument(division in) {
 		// get the root elememt
 		Element docEle = dom.getDocumentElement();
 		Team res;

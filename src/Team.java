@@ -7,7 +7,7 @@ public class Team {
 	
 	private ArrayList<Player> Team = new ArrayList<Player>();
 	private String name;
-	private int budget;
+	private int budget = 200000;
 	private boolean pccontrolled;
 	
 	public Team(String name, int budget, boolean pccontrolled){
@@ -15,6 +15,7 @@ public class Team {
 		this.budget = budget;
 		this.pccontrolled = pccontrolled;
 	}
+	
 
 	public void add(Player player) {
 		Team.add(player);
@@ -24,7 +25,9 @@ public class Team {
 		return Team.size();
 	}
 
-	
+	public String getName(){
+		return name;
+	}
 	
 
 	public Player get(int i) {
@@ -69,7 +72,9 @@ public class Team {
 		GUI.wissels.add(player);
 	}
 
-	
+	public int getBudget(){
+		return budget;
+	}
 
 	public void setBudget(int prijs){
 		this.budget = prijs;
@@ -119,14 +124,15 @@ public class Team {
 		int total = getoff/11;
 		return total;
 	}
-	public String getName(){
-		return this.name;
-	}
-	public int getBudget(){
-		return this.budget;
-	}
+	
 	public boolean GetPcControlled(){
 		return this.pccontrolled;
+	}
+	public int GetBudget(){
+		return this.budget;
+	}
+	public void SetBudget(int budget){
+		this.budget = budget;
 	}
 	public void SetPcControlled(boolean controlled){
 		this.pccontrolled = controlled;
