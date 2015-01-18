@@ -10,6 +10,7 @@ public class TestReading implements ReadAndWriteCombiner{
 		
 		writeXMLtest tess = new writeXMLtest();
 		tess.runExample(res);
+		System.out.println(res.get(5).get(3).toString());
 		}
 		
 	}

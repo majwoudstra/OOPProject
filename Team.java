@@ -8,10 +8,14 @@ public class Team {
 	private ArrayList<Player> Team = new ArrayList<Player>();
 	private String name;
 	private int budget = 200000;
+	private boolean pccontrolled;
 	
-	public Team(String nm){
-		name = nm;
+	public Team(String name, int budget, boolean pccontrolled){
+		this.name = name;
+		this.budget = budget;
+		this.pccontrolled = pccontrolled;
 	}
+	
 
 	public void add(Player player) {
 		Team.add(player);
@@ -65,7 +69,7 @@ public class Team {
 		}
 		player.setIsActive(false);
 		Team.add(player);
-		GUI.wissels.add(player);
+		FootballManager.getWissels().add(player);
 	}
 
 	public int getBudget(){
@@ -121,8 +125,18 @@ public class Team {
 		return total;
 	}
 	
-	
-	
+	public boolean GetPcControlled(){
+		return this.pccontrolled;
+	}
+	public int GetBudget(){
+		return this.budget;
+	}
+	public void SetBudget(int budget){
+		this.budget = budget;
+	}
+	public void SetPcControlled(boolean controlled){
+		this.pccontrolled = controlled;
+	}
 }
 
 
