@@ -1,12 +1,4 @@
-package com.gs.xmlparser;
-
-
-
-
-
-
 import java.io.IOException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -16,9 +8,26 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class readXML extends writeXML {
+public class readXML {
 
-
+	Team Ado = new Team("", 0, false);
+	Team Ajax = new Team("", 0, false);
+	Team PSV = new Team("", 0, false);
+	Team AZ = new Team("", 0, false);
+	Team Feyenoord = new Team("", 0, false);
+	Team Vitesse = new Team("", 0, false);
+	Team Cambuur = new Team("", 0, false);
+	Team GoAhead = new Team("", 0, false);
+	Team Heerenveen = new Team("", 0, false);
+	Team Excelsior = new Team("", 0, false);
+	Team Dordrecht = new Team("", 0, false);
+	Team Groningen = new Team("", 0, false);
+	Team Twente = new Team("", 0, false);
+	Team Utrecht = new Team("", 0, false);
+	Team Heracles = new Team("", 0, false);
+	Team NAC = new Team("", 0, false);
+	Team PEC = new Team("", 0, false);
+	Team WillemII = new Team("", 0, false);
 
 	// No generics
 	Team res;
@@ -26,13 +35,13 @@ public class readXML extends writeXML {
 
 	public readXML() {
 		// create a list to hold the employee objects
-		 res = new Team("", 0, true);
+		res = new Team("", 0, false);
 	}
 
-	public void LoadXMLFile(division in, String infile) {
+	public void runExample(Division in) {
 
 		// parse the xml file and get the dom object
-		parseXmlFile(infile);
+		parseXmlFile();
 
 		// get each employee element and create a Employee object
 		parseDocument(in);
@@ -41,7 +50,7 @@ public class readXML extends writeXML {
 		
 	}
 
-	private void parseXmlFile(String infile) {
+	private void parseXmlFile() {
 		// get the factory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -51,7 +60,7 @@ public class readXML extends writeXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			// parse using builder to get DOM representation of the XML file
-			dom = db.parse(infile);
+			dom = db.parse("XML.xml");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -62,7 +71,7 @@ public class readXML extends writeXML {
 		}
 	}
 
-	private void parseDocument(division in) {
+	private void parseDocument(Division in) {
 		// get the root elememt
 		Element docEle = dom.getDocumentElement();
 		Team res;
