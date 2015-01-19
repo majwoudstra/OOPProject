@@ -1,8 +1,4 @@
-package com.gs.xmlparser;
 
-import Player;
-import Team;
-import division;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,7 +16,7 @@ import org.w3c.dom.Text;
 
 @SuppressWarnings("deprecation")
 public class writeXML {
-	Team res = new Team("", 0, true);
+	Team res = new Team("", 0, true, 0, 0, 0, 0);
 	Document dom;
 
 	private void createDocument() {
@@ -147,9 +143,29 @@ public class writeXML {
 		Text controlledText = dom.createTextNode(String.valueOf(in.GetPcControlled()));
 		controlledEle.appendChild(controlledText);
 		
+		Element dpvoorEle = dom.createElement("DoelpuntenVoor");
+		Text dpvoorText = dom.createTextNode(Integer.toString(in.GetDoelpuntenVoor()));
+		dpvoorEle.appendChild(dpvoorText);
+		
+		Element dptegenEle = dom.createElement("DoelpuntenTegen");
+		Text dptegenText = dom.createTextNode(Integer.toString(in.GetDoelpuntenTegen()));
+		dptegenEle.appendChild(dptegenText);
+		
+		Element dpsaldoEle = dom.createElement("Doelsaldo");
+		Text dpsaldoText = dom.createTextNode(Integer.toString(in.GetDoelpuntenSaldo()));
+		dpsaldoEle.appendChild(dpsaldoText);
+		
+		Element psaldoEle = dom.createElement("Punten");
+		Text psaldoText = dom.createTextNode(Integer.toString(in.GetPuntenSaldo()));
+		psaldoEle.appendChild(psaldoText);
+		
 		teamEle.appendChild(nameEle);
 		teamEle.appendChild(budgetEle);
 		teamEle.appendChild(controlledEle);
+		teamEle.appendChild(dpvoorEle);
+		teamEle.appendChild(dptegenEle);
+		teamEle.appendChild(dpsaldoEle);
+		teamEle.appendChild(psaldoEle);
 		
 		for (int i = 0; i < in.size(); i++) {
 			Element playEle = createPlayerElement(in.get(i));

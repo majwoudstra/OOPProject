@@ -1,4 +1,12 @@
+
+
+
+
+
+
+
 import java.io.IOException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -8,7 +16,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class readXML {
+
+
+public class readXML extends writeXML {
 
 
 
@@ -18,13 +28,13 @@ public class readXML {
 
 	public readXML() {
 		// create a list to hold the employee objects
-		 res = new Team("", 0, true);
+		 res = new Team("", 0, true, 0, 0, 0, 0);
 	}
 
-	public void runExample(Division in) {
+	public void LoadXMLFile(division in, String infile) {
 
 		// parse the xml file and get the dom object
-		parseXmlFile();
+		parseXmlFile(infile);
 
 		// get each employee element and create a Employee object
 		parseDocument(in);
@@ -33,7 +43,7 @@ public class readXML {
 		
 	}
 
-	private void parseXmlFile() {
+	private void parseXmlFile(String infile) {
 		// get the factory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -43,7 +53,7 @@ public class readXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			// parse using builder to get DOM representation of the XML file
-			dom = db.parse("src/XML5.xml");
+			dom = db.parse(infile);
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -54,11 +64,15 @@ public class readXML {
 		}
 	}
 
-	private void parseDocument(Division in) {
+	private void parseDocument(division in) {
 		// get the root elememt
 		Element docEle = dom.getDocumentElement();
 		Team res;
 		String name = "";
+		int dpvoor;
+		int dptegen;
+		int dpsaldo;
+		int psaldo;
 		int budget = 0;
 		boolean pccontrolled;
 		// get a nodelist of <employee> elements
@@ -71,9 +85,13 @@ public class readXML {
 				name = getTextValue(el, "Name");
 				budget = getIntValue(el,"Budget");
 				pccontrolled = Boolean.parseBoolean(getTextValue(el, "Spelergestuurd"));
-
-				res = new Team(name, budget, pccontrolled);
-				res = AddToTeam(el, name, budget, pccontrolled);
+				dpvoor = getIntValue(el, "DoelpuntenVoor");
+				dptegen = getIntValue(el, "DoelpuntenTegen");
+				dpsaldo = getIntValue(el, "Doelsaldo");
+				psaldo = getIntValue(el, "Punten");
+				
+				res = new Team(name, budget, pccontrolled, dpvoor, dptegen, dpsaldo, psaldo);
+				res = AddToTeam(el, name, budget, pccontrolled, dpvoor, dptegen, dpsaldo, psaldo);
 
 				// add it to list
 				
@@ -136,8 +154,8 @@ public class readXML {
 		return Integer.parseInt(getTextValue(ele, tagName));
 	}
 
-	private Team AddToTeam(Element el, String name, int budget, boolean controlled) {
-		Team res = new Team(name, budget, controlled);
+	private Team AddToTeam(Element el, String name, int budget, boolean controlled, int dpvoor, int dptegen, int dpsaldo, int psaldo ) {
+		Team res = new Team(name, budget, controlled, dpvoor, dptegen, dpsaldo, psaldo);
 		NodeList nl = el.getElementsByTagName("Speler");
 		if (nl != null && nl.getLength() > 0) {
 			for (int i = 0; i < nl.getLength(); i++) {
