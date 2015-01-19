@@ -21,10 +21,10 @@ public class readXML {
 		 res = new Team("", 0, true);
 	}
 
-	public void runExample(Division in) {
+	public void runExample(Division in, String file) {
 
 		// parse the xml file and get the dom object
-		parseXmlFile();
+		parseXmlFile(file);
 
 		// get each employee element and create a Employee object
 		parseDocument(in);
@@ -33,7 +33,7 @@ public class readXML {
 		
 	}
 
-	private void parseXmlFile() {
+	private void parseXmlFile(String file) {
 		// get the factory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -43,7 +43,7 @@ public class readXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			// parse using builder to get DOM representation of the XML file
-			dom = db.parse("src/XML5.xml");
+			dom = db.parse(file);
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();

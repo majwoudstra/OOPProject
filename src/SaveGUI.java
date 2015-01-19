@@ -4,7 +4,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -12,8 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-public class LoadGUI extends JFrame implements ActionListener{
+public class SaveGUI extends JFrame implements ActionListener{
 
 	GridBagLayout k = new GridBagLayout();
 	JPanel pane = new JPanel(k);
@@ -24,19 +22,14 @@ public class LoadGUI extends JFrame implements ActionListener{
 	JButton b5;
 	JLabel t1;
 	int cs;
-	Division div = null;
-	String team1 = null;
 	
-	public LoadGUI(){
+	public SaveGUI(JPanel k){
 		setSize(1080,720);
-		initUI();
+		initUI(k);
 	}
 
-	private final void initUI() {
+	private final void initUI(JPanel p) {
 
-		GridBagLayout k = new GridBagLayout();
-		JPanel pane = new JPanel(k);
-		
     	pane.setLayout(k);
     	GridBagConstraints c = new GridBagConstraints();
     	c.fill = GridBagConstraints.BOTH;
@@ -91,71 +84,36 @@ public class LoadGUI extends JFrame implements ActionListener{
 		//Save 1
 		if(e.getSource().equals(b1)){
 			//Laad save 1
-			b4.setVisible(true);
-			Division res = new Division();
-			readXML test = new readXML();
-			test.runExample(res, "src/save1.xml");
-
-			for(int i = 0; i < 18; i++){
-				if(res.get(i).GetPcControlled()){
-					String team2 = res.get(i).getName();
-					team1 = team2;
-				}
-			}
+			Division res = FootballManager.getDiv();
+			writeXMLtest tess = new writeXMLtest();
+			tess.runExample(res, "src/save1.xml");
 			t1.removeAll();
-			t1.setText("Team: " + team1);
+			t1.setText("Saved to save1");
 			t1.repaint();
 			t1.revalidate();
-			repaint();
-			revalidate();
-			div = res;
 		}
 		else if(e.getSource().equals(b2)){
 			//Laad save 2
-			b4.setVisible(true);
-			Division res = new Division();
-			readXML test = new readXML();
-			test.runExample(res, "src/save2.xml");
-			for(int i = 0; i < 18; i++){
-				if(res.get(i).GetPcControlled()){
-					String team2 = res.get(i).getName();
-					team1 = team2;
-				}
-			}
+			Division res = FootballManager.getDiv();
+			writeXMLtest tess = new writeXMLtest();
+			tess.runExample(res, "src/save2.xml");
 			t1.removeAll();
-			t1.setText("Team: " + team1);
+			t1.setText("Saved to save2");
 			t1.repaint();
 			t1.revalidate();
-			repaint();
-			revalidate();
-			div = res;
 		}
 		else if(e.getSource().equals(b3)){
 			//Laad save 3
-			b4.setVisible(true);
-			Division res = new Division();
-			readXML test = new readXML();
-			test.runExample(res, "src/save3.xml");
-			for(int i = 0; i < 18; i++){
-				if(res.get(i).GetPcControlled()){
-					String team2 = res.get(i).getName();
-					team1 = team2;
-				}
-			}
+			Division res = FootballManager.getDiv();
+			writeXMLtest tess = new writeXMLtest();
+			tess.runExample(res, "src/save3.xml");
 			t1.removeAll();
-			t1.setText("Team: " + team1);
+			t1.setText("Saved to save3");
 			t1.repaint();
 			t1.revalidate();
-			repaint();
-			revalidate();
-			div = res;
 		}
 		else if(e.getSource().equals(b4)){
-			FootballManager.setDiv(div);
-			FootballManager.update();
-			dispose();
-			GUI g = new GUI();
-			g.setVisible(true);
+			//Als current game = 1, open NewGameGUI, anders GUI
 		}
 		
 		else if(e.getSource().equals(b5)){
@@ -163,3 +121,4 @@ public class LoadGUI extends JFrame implements ActionListener{
 		}
 	}
 }
+

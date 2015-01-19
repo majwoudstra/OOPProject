@@ -190,8 +190,9 @@ public class GUI extends JFrame implements ActionListener{
         spelersList2.addActionListener(this);
         spelersList3.addItem(FootballManager.getSelectie().get(2).toStringRug());
         for(int i = 0; i < FootballManager.getWissels().size(); i++)
-        	spelersList3.addItem(FootballManager.getSelectie().get(i).toStringRug());
+        	spelersList3.addItem(FootballManager.getWissels().get(i).toStringRug());
         spelersList3.addActionListener(this);
+        
         spelersList4.addItem(FootballManager.getSelectie().get(3).toStringRug());
         for(int i = 0; i < FootballManager.getWissels().size(); i++)
         	spelersList4.addItem(FootballManager.getWissels().get(i).toStringRug());
@@ -385,7 +386,7 @@ public class GUI extends JFrame implements ActionListener{
 				s.setVisible(true);
 			}
 			else if (choice.equals("LOAD")){
-				LoadGUI g = new LoadGUI(pane);
+				LoadGUI g = new LoadGUI();
 				g.setVisible(true);
 			}else if (choice.equals("QUIT")){
 				dispose();

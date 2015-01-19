@@ -13,10 +13,17 @@ public class FootballManager {
 		res = new Division();
 		selectie = new ArrayList<Player>();
 		wissels = new ArrayList<Player>();
-		readXML test = new readXML();
-		test.runExample(res, "src/XML5.xml");
+
+		LoadGUI l = new LoadGUI();
+		l.setVisible(true);
 		
-		
+	}
+
+	public static Division getDiv() {
+		return res;
+	}
+	
+	public static void update(){
 		for(int i = 0; i < 18; i++){
 			if(res.get(i).GetPcControlled()){
 				pc = res.get(i);
@@ -30,14 +37,7 @@ public class FootballManager {
 			else{
 				wissels.add(pc.get(i));
 			}
-		}		
-		GUI ex = new GUI();
-		ex.setVisible(true);
-		
-	}
-
-	public static Division getDiv() {
-		return res;
+		}	
 	}
 
 	public static void setDiv(Division div) {

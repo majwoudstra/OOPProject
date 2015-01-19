@@ -94,7 +94,7 @@ public class writeXMLtest {
 		return playEle;
 	}
 
-	private void printToFile() {
+	private void printToFile(String file) {
 
 		try {
 			// print
@@ -104,7 +104,7 @@ public class writeXMLtest {
 			// to generate output to console use this serializer
 			// XMLSerializer serializer = new XMLSerializer(System.out, format);
 
-			FileOutputStream out = new FileOutputStream(new File("XML5.xml"));
+			FileOutputStream out = new FileOutputStream(new File(file));
 
 			XMLSerializer serializer = new XMLSerializer(out, format);
 
@@ -115,10 +115,10 @@ public class writeXMLtest {
 		}
 	}
 
-	public void runExample(Division in) {
+	public void runExample(Division in, String file) {
 		System.out.println("Started .. ");
 		createDOMTree(in);
-		printToFile();
+		printToFile(file);
 		System.out.println("Generated file successfully.");
 	}
 
