@@ -381,7 +381,8 @@ public class GUI extends JFrame implements ActionListener{
 				System.out.println("You pressed the new button");
 			}
 			else if (choice.equals("SAVE")){
-				System.out.println("You pressed the save button");
+				SaveGUI s = new SaveGUI(pane);
+				s.setVisible(true);
 			}
 			else if (choice.equals("LOAD")){
 				LoadGUI g = new LoadGUI(pane);

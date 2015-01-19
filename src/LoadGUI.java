@@ -1,8 +1,10 @@
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -19,6 +21,7 @@ public class LoadGUI extends JFrame implements ActionListener{
 	JButton b2;
 	JButton b3;
 	JButton b4;
+	JButton b5;
 	JLabel t1;
 	int cs;
 	
@@ -59,9 +62,17 @@ public class LoadGUI extends JFrame implements ActionListener{
         c.gridx = 0;
         c.gridy = 3;
         pane.add(b4,c);
+        b4.addActionListener(this);
         b4.setVisible(false);
         
+        b5 = new JButton("Back");
+        c.gridx = 1;
+        c.gridy = 3;
+        pane.add(b5,c);
+        b5.addActionListener(this);
+        
         t1 = new JLabel();
+        t1.setBorder(BorderFactory.createLineBorder(new Color(0,0,100)));
         c.gridx = 1;
         c.gridy = 0;
         c.gridheight = 3;
@@ -76,24 +87,51 @@ public class LoadGUI extends JFrame implements ActionListener{
 		if(e.getSource().equals(b1)){
 			//Laad save 1
 			b4.setVisible(true);
+			Division res = new Division();
+			readXML test = new readXML();
+			test.runExample(res, "src/save1.xml");
+			String team = null;
+			for(int i = 0; i < 18; i++){
+				if(res.get(i).GetPcControlled()){
+					team = res.get(i).getName();
+				}
+			}
 			t1.removeAll();
-			t1.setText("Info over save 1");
+			t1.setText("Team: " + team);
 			t1.repaint();
 			t1.revalidate();
 		}
 		else if(e.getSource().equals(b2)){
 			//Laad save 2
 			b4.setVisible(true);
+			Division res = new Division();
+			readXML test = new readXML();
+			test.runExample(res, "src/save2.xml");
+			String team = null;
+			for(int i = 0; i < 18; i++){
+				if(res.get(i).GetPcControlled()){
+					team = res.get(i).getName();
+				}
+			}
 			t1.removeAll();
-			t1.setText("Info over save 2");
+			t1.setText("Team: " + team);
 			t1.repaint();
 			t1.revalidate();
 		}
 		else if(e.getSource().equals(b3)){
 			//Laad save 3
 			b4.setVisible(true);
+			Division res = new Division();
+			readXML test = new readXML();
+			test.runExample(res, "src/save3.xml");
+			String team = null;
+			for(int i = 0; i < 18; i++){
+				if(res.get(i).GetPcControlled()){
+					team = res.get(i).getName();
+				}
+			}
 			t1.removeAll();
-			t1.setText("Info over save 3");
+			t1.setText("Team: " + team);
 			t1.repaint();
 			t1.revalidate();
 		}
@@ -101,5 +139,8 @@ public class LoadGUI extends JFrame implements ActionListener{
 			//Als current game = 1, open NewGameGUI, anders GUI
 		}
 		
+		else if(e.getSource().equals(b5)){
+			dispose();
+		}
 	}
 }

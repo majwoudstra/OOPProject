@@ -14,7 +14,7 @@ public class FootballManager {
 		selectie = new ArrayList<Player>();
 		wissels = new ArrayList<Player>();
 		readXML test = new readXML();
-		test.runExample(res);
+		test.runExample(res, "src/XML5.xml");
 		
 		
 		for(int i = 0; i < 18; i++){
@@ -24,7 +24,6 @@ public class FootballManager {
 		}
 		
 		for(int i = 0; i < pc.size(); i++){
-			System.out.println(pc.get(i).toString());
 			if(pc.get(i).GetIsActive()){
 				selectie.add(pc.get(i));
 			}
