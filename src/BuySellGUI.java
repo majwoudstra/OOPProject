@@ -14,6 +14,8 @@ public class BuySellGUI extends JFrame implements ActionListener{
     private boolean change = true;
     JButton b3;
     JLabel t2;
+    JLabel t3;
+    JLabel t4;
     GUI gui;
 	
 	GridBagLayout k = new GridBagLayout();
@@ -59,7 +61,7 @@ public class BuySellGUI extends JFrame implements ActionListener{
         
     	String[] teams = {"ADO", "Ajax", "AZ", "Excelsior", "FC Dordrecht", "FC Groningen", "FC Twente", "FC Utrecht", "Feyenoord", "Go Ahead Eagles", "Heracles Almelo", "NAC Breda", "PEC Zwolle", "PSV", "SC Cambuur", "SC Heereveen", "Vitesse", "Willem II"};
         for(int i = 0; i < teams.length; i++){
-        	if(!teams[i].equals(GUI.team))
+        	if(!teams[i].equals(FootballManager.getPc().getName()))
         		teamList.addItem(teams[i].toString());
         }
         c.gridx = 0;
@@ -90,10 +92,23 @@ public class BuySellGUI extends JFrame implements ActionListener{
         pane.add(t2,c);
         t2.setVisible(false);
         
+        t4 = new JLabel("Player Bought!");
+        t4.setBorder(BorderFactory.createLineBorder(new Color(0,0,100)));
+        c.gridy = 5;
+        c.gridwidth = 2;
+        pane.add(t4,c);
+        t4.setVisible(false);
+        
         JButton b4 = new JButton("Go Back");
-        c.gridy = 6;
+        c.gridy = 7;
         pane.add(b4,c);
         b4.addActionListener(this);
+        
+        t3 = new JLabel();
+        String bud = Integer.toString(FootballManager.getPc().getBudget());
+        t3.setText("Budget: " + bud);
+        c.gridy = 6;
+        pane.add(t3,c);
         
         add(pane);
 	}
@@ -114,14 +129,22 @@ public class BuySellGUI extends JFrame implements ActionListener{
 			dispose();
 		}
 		else if(choice.equals("Buy")){
+			t2.setVisible(false);
+			t4.setVisible(false);
 			int speler = spelerList.getSelectedIndex();
 			String team = teamList.getSelectedItem().toString();
 			Team t1 = getTeam(team);
 			Player p1 = t1.get(speler);
-			if(GUI.te1.getBudget() >= p1.GetPrice()){
-				GUI.te1.setBudget((GUI.te1.getBudget() - p1.GetPrice()));
-				GUI.te1.buy(p1);
+			if(FootballManager.getPc().getBudget() >= p1.GetPrice()){
+				t3.removeAll();
+				t4.setVisible(true);
+				FootballManager.getPc().setBudget((FootballManager.getPc().getBudget() - p1.GetPrice()));
+				FootballManager.getPc().buy(p1);
 				getTeam(team).removePlayer(speler);
+				String bg = Integer.toString(FootballManager.getPc().getBudget());
+				t3.setText("Budget:" + bg);
+				t3.repaint();
+				t3.revalidate();
 			}
 			else{
 				t2.setVisible(true);
@@ -161,9 +184,9 @@ public class BuySellGUI extends JFrame implements ActionListener{
 	
 	public static Team getTeam(String team){
 		Team t1 = null;
-		for(int i = 0; i < GUI.div.Size(); i++){
-			if(GUI.div.get(i).getName().equals(team)){
-				t1 = GUI.div.get(i);
+		for(int i = 0; i < FootballManager.getDiv().Size(); i++){
+			if(FootballManager.getDiv().get(i).getName().equals(team)){
+				t1 = FootballManager.getDiv().get(i);
 			}
 		}
 		return t1;

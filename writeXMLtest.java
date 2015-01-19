@@ -6,15 +6,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.xml.serialize.OutputFormat;
-import org.apache.xml.serialize.XMLSerializer;
+import com.sun.org.apache.xml.internal.serialize.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
 @SuppressWarnings("deprecation")
 public class writeXMLtest {
-	Team res = new Team("", 0, false);
+	Team res = new Team("", 0, true);
 	Document dom;
 
 	private void createDocument() {
@@ -105,7 +104,7 @@ public class writeXMLtest {
 			// to generate output to console use this serializer
 			// XMLSerializer serializer = new XMLSerializer(System.out, format);
 
-			FileOutputStream out = new FileOutputStream(new File("XML3.xml"));
+			FileOutputStream out = new FileOutputStream(new File("XML5.xml"));
 
 			XMLSerializer serializer = new XMLSerializer(out, format);
 

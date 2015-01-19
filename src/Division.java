@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 
 
-public class division {
+public class Division {
 
 	private static ArrayList<Team> division = new ArrayList<Team>();
 	

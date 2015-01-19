@@ -27,7 +27,7 @@ public class NewGameGUI extends JFrame implements ActionListener{
     	
         pane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         
-        JButton b1 = new JButton("ADO");
+        JButton b1 = new JButton("ADO Den Haag");
         c.gridx = 0;
         c.gridy = 0;
         pane.add(b1,c);
@@ -117,7 +117,7 @@ public class NewGameGUI extends JFrame implements ActionListener{
         pane.add(b15,c);
         b15.addActionListener(this);
         
-        JButton b16 = new JButton("SC Heereveen");
+        JButton b16 = new JButton("SC Heerenveen");
         c.gridx = 2;
         c.gridy = 3;
         pane.add(b16,c);
@@ -140,8 +140,17 @@ public class NewGameGUI extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		for(int i = 0; i < 18; i++){
+			FootballManager.getDiv().get(i).SetPcControlled(false);
+		}
 		String team = e.getActionCommand();
-		GUI.team = team;
+		System.out.println(team);
+		for(int i = 0; i < 18; i++){
+			System.out.println(FootballManager.getDiv().get(i).getName());
+			if(team.equals(FootballManager.getDiv().get(i).getName())){
+				FootballManager.getDiv().get(i).SetPcControlled(true);
+			}
+		}
 		end();
 		dispose();
 	}

@@ -69,7 +69,7 @@ public class Team {
 		}
 		player.setIsActive(false);
 		Team.add(player);
-		GUI.wissels.add(player);
+		FootballManager.getWissels().add(player);
 	}
 
 	public int getBudget(){
