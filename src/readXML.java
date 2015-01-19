@@ -21,7 +21,7 @@ public class readXML {
 		 res = new Team("", 0, true);
 	}
 
-	public void runExample(division in) {
+	public void runExample(Division in) {
 
 		// parse the xml file and get the dom object
 		parseXmlFile();
@@ -43,7 +43,7 @@ public class readXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			// parse using builder to get DOM representation of the XML file
-			dom = db.parse("XML.xml");
+			dom = db.parse("src/XML5.xml");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -54,7 +54,7 @@ public class readXML {
 		}
 	}
 
-	private void parseDocument(division in) {
+	private void parseDocument(Division in) {
 		// get the root elememt
 		Element docEle = dom.getDocumentElement();
 		Team res;
