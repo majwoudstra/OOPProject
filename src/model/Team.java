@@ -1,28 +1,22 @@
+package model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import controller.*;
 
 public class Team {
 
 	
 	private ArrayList<Player> Team = new ArrayList<Player>();
 	private String name;
-	private int budget;
+	private int budget = 200000;
 	private boolean pccontrolled;
-	private int doelpuntenvoor;
-	private int doelpuntentegen;
-	private int doelpuntensaldo;
-	private int puntensaldo;
 	
-	
-	public Team(String name, int budget, boolean pccontrolled, int doelpuntenvoor, int doelpuntentegen, int doelpuntensaldo, int puntensaldo){
+	public Team(String name, int budget, boolean pccontrolled){
 		this.name = name;
 		this.budget = budget;
 		this.pccontrolled = pccontrolled;
-		this.doelpuntenvoor = doelpuntenvoor;
-		this.doelpuntentegen = doelpuntentegen;
-		this.doelpuntensaldo = doelpuntensaldo;
-		this.puntensaldo = puntensaldo;
 	}
 	
 
@@ -78,7 +72,7 @@ public class Team {
 		}
 		player.setIsActive(false);
 		Team.add(player);
-		
+		FootballManager.getWissels().add(player);
 	}
 
 	public int getBudget(){
@@ -107,30 +101,31 @@ public class Team {
 	}
 	
 	//hier komen de getters voor het spelen van een wedstrijd.
+	public int getOff(){
+		int getoff = 0;
+		for(int i = 0; i < 11; i++){
+			getoff = getoff + this.get(i).GetDefence();
+		}
+		int total = getoff/11;
+		return total;
+	}
+
+	public int getDef(){
+		int getoff = 0;
+		for(int i = 0; i < 11; i++){
+			getoff = getoff + this.get(i).GetDefence();
+		}
+		int total = getoff/11;
+		return total;
+	}
 	
-	public int GetDoelpuntenVoor(){
-		return this.doelpuntenvoor;
-	}
-	public int GetDoelpuntenTegen(){
-		return this.doelpuntentegen;
-	}
-	public int GetDoelpuntenSaldo(){
-		return this.doelpuntensaldo;
-	}
-	public int GetPuntenSaldo(){
-		return this.puntensaldo;
-	}
-	public void SetDoelpuntenVoor(int voor){
-		this.doelpuntenvoor = voor;
-	}
-	public void SetDoelpuntenTegen(int tegen){
-		this.doelpuntentegen = tegen;
-	}
-	public void SetDoelpuntenSaldo(int saldo){
-		this.doelpuntensaldo = saldo;
-	}
-	public void SetPuntenSaldo(int saldo){
-		this.puntensaldo = saldo;
+	public int getStam(){
+		int getoff = 0;
+		for(int i = 0; i < 11; i++){
+			getoff = getoff + this.get(i).GetStamina();
+		}
+		int total = getoff/11;
+		return total;
 	}
 	
 	public boolean GetPcControlled(){

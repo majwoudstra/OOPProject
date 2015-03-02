@@ -1,12 +1,14 @@
-package com.gs.xmlparser;
 
-public class XML extends readXML {
+
+
+
+public interface XML {
 
 	
-	 public void LoadXML(String name, division div){
-		 LoadXMLFile(div, name);
-	 }
-	 public void WriteXML(String outfile, division div){
-		 SaveXMLFile(div, outfile);
-	 }
+	public class rdXML extends readXML{
+		
+	}
+	public class wtXML extends writeXML {
+		
+	}
 }

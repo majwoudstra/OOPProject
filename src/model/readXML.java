@@ -1,6 +1,5 @@
-
+package model;
 import java.io.IOException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -10,7 +9,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class readXML extends writeXML {
+public class readXML {
+
+
 
 	// No generics
 	Team res;
@@ -18,22 +19,22 @@ public class readXML extends writeXML {
 
 	public readXML() {
 		// create a list to hold the employee objects
-		res = new Team("", 0, true, 0, 0, 0, 0);
+		 res = new Team("", 0, true);
 	}
 
-	public void LoadXMLFile(Division in, String infile) {
+	public void runExample(Division in, String file) {
 
 		// parse the xml file and get the dom object
-		parseXmlFile(infile);
+		parseXmlFile(file);
 
 		// get each employee element and create a Employee object
 		parseDocument(in);
 
 		// Iterate through the list and print the data
-
+		
 	}
 
-	public void parseXmlFile(String infile) {
+	private void parseXmlFile(String file) {
 		// get the factory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -43,7 +44,7 @@ public class readXML extends writeXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			// parse using builder to get DOM representation of the XML file
-			dom = db.parse(infile);
+			dom = db.parse(file);
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -56,18 +57,9 @@ public class readXML extends writeXML {
 
 	private void parseDocument(Division in) {
 		// get the root elememt
-		
 		Element docEle = dom.getDocumentElement();
-		int round = getIntValue(docEle, "Round");
-		in.SetRound(round);
-		boolean offer = Boolean.parseBoolean(getTextValue(docEle,"Offer"));
-		in.SetOffer(offer);
 		Team res;
 		String name = "";
-		int dpvoor;
-		int dptegen;
-		int dpsaldo;
-		int psaldo;
 		int budget = 0;
 		boolean pccontrolled;
 		// get a nodelist of <employee> elements
@@ -78,21 +70,14 @@ public class readXML extends writeXML {
 				// get the employee element
 				Element el = (Element) nl.item(i);
 				name = getTextValue(el, "Name");
-				budget = getIntValue(el, "Budget");
-				pccontrolled = Boolean.parseBoolean(getTextValue(el,
-						"Spelergestuurd"));
-				dpvoor = getIntValue(el, "DoelpuntenVoor");
-				dptegen = getIntValue(el, "DoelpuntenTegen");
-				dpsaldo = getIntValue(el, "Doelsaldo");
-				psaldo = getIntValue(el, "Punten");
+				budget = getIntValue(el,"Budget");
+				pccontrolled = Boolean.parseBoolean(getTextValue(el, "Spelergestuurd"));
 
-				res = new Team(name, budget, pccontrolled, dpvoor, dptegen,
-						dpsaldo, psaldo);
-				res = AddToTeam(el, name, budget, pccontrolled, dpvoor,
-						dptegen, dpsaldo, psaldo);
+				res = new Team(name, budget, pccontrolled);
+				res = AddToTeam(el, name, budget, pccontrolled);
 
 				// add it to list
-
+				
 				in.add(res);
 			}
 		}
@@ -112,12 +97,11 @@ public class readXML extends writeXML {
 		int defence = getIntValue(PlayEl, "Verdediging");
 		int stamina = getIntValue(PlayEl, "Uithoudingsvermogen");
 		int playernumber = getIntValue(PlayEl, "Rugnummer");
-
+		
 		boolean isactive = Boolean.parseBoolean(getTextValue(PlayEl,
 				"Beschikbaarheid"));
 		int price = getIntValue(PlayEl, "Prijs");
-		Player e = new Player(firstname, lastname, offence, defence, stamina,
-				playernumber, price, isactive);
+		Player e = new Player(firstname, lastname, offence, defence, stamina, playernumber, price, isactive);
 		return e;
 	}
 
@@ -153,10 +137,8 @@ public class readXML extends writeXML {
 		return Integer.parseInt(getTextValue(ele, tagName));
 	}
 
-	private Team AddToTeam(Element el, String name, int budget,
-			boolean controlled, int dpvoor, int dptegen, int dpsaldo, int psaldo) {
-		Team res = new Team(name, budget, controlled, dpvoor, dptegen, dpsaldo,
-				psaldo);
+	private Team AddToTeam(Element el, String name, int budget, boolean controlled) {
+		Team res = new Team(name, budget, controlled);
 		NodeList nl = el.getElementsByTagName("Speler");
 		if (nl != null && nl.getLength() > 0) {
 			for (int i = 0; i < nl.getLength(); i++) {
@@ -171,4 +153,5 @@ public class readXML extends writeXML {
 		return res;
 	}
 
+	
 }

@@ -1,4 +1,8 @@
+package controller;
 import java.util.ArrayList;
+
+import model.*;
+import view.*;
 
 
 public class FootballManager {
@@ -7,9 +11,11 @@ public class FootballManager {
 	private static ArrayList<Player> selectie;
 	private static ArrayList<Player> wissels;
 	Team in;
+	private static boolean GUIOpen;
 
 	public static void main(String[] args) {
-		res = new Division(1, true);
+		// TODO Auto-generated method stub
+		res = new Division();
 		selectie = new ArrayList<Player>();
 		wissels = new ArrayList<Player>();
 
@@ -22,14 +28,14 @@ public class FootballManager {
 		return res;
 	}
 	
-	@SuppressWarnings("static-access")
 	public static void update(){
 		for(int i = 0; i < 18; i++){
 			if(res.get(i).GetPcControlled()){
 				pc = res.get(i);
 			}
 		}
-		
+		selectie.clear();
+		wissels.clear();
 		for(int i = 0; i < pc.size(); i++){
 			if(pc.get(i).GetIsActive()){
 				selectie.add(pc.get(i));
@@ -41,7 +47,7 @@ public class FootballManager {
 	}
 
 	public static void setDiv(Division div) {
-		FootballManager.res = div;
+		res = div;
 	}
 
 	public static Team getPc() {
@@ -66,6 +72,13 @@ public class FootballManager {
 
 	public static void setWissels(ArrayList<Player> wissels) {
 		FootballManager.wissels = wissels;
+	}
+	public static boolean getGUI(){
+		return GUIOpen;
+	}
+	
+	public static void setGUI(boolean p){
+		GUIOpen = p;
 	}
 
 }

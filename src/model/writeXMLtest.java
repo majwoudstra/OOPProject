@@ -1,5 +1,4 @@
-
-
+package model;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,15 +7,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.xml.serialize.OutputFormat;
-import org.apache.xml.serialize.XMLSerializer;
+import com.sun.org.apache.xml.internal.serialize.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
 @SuppressWarnings("deprecation")
-public class writeXML {
-	Team res = new Team("", 0, true, 0, 0, 0, 0);
+public class writeXMLtest {
+	Team res = new Team("", 0, true);
 	Document dom;
 
 	private void createDocument() {
@@ -38,18 +36,11 @@ public class writeXML {
 
 	private void createDOMTree(Division in) {
 		Element rootEle = dom.createElement("Division");
-		Element roundEle = dom.createElement("Round");
-		Text roundText = dom.createTextNode(Integer.toString(in.GetRound()));
-		Element offerEle = dom.createElement("Offer");
-		Text offerText = dom.createTextNode(String.valueOf(in.GetOffer()));
-		offerEle.appendChild(offerText);
-		roundEle.appendChild(roundText);
 		dom.appendChild(rootEle);
-		rootEle.appendChild(roundEle);
-		rootEle.appendChild(offerEle);
-		for (int i = 0; i < Division.Size(); i++) {
 
-			Element teamEle = createTeamElement(Division.get(i));
+		for (int i = 0; i < in.Size(); i++) {
+
+			Element teamEle = createTeamElement(in.get(i));
 			
 			rootEle.appendChild(teamEle);
 		}
@@ -104,7 +95,7 @@ public class writeXML {
 		return playEle;
 	}
 
-	private void printToFile(String infile) {
+	private void printToFile(String file) {
 
 		try {
 			// print
@@ -114,7 +105,7 @@ public class writeXML {
 			// to generate output to console use this serializer
 			// XMLSerializer serializer = new XMLSerializer(System.out, format);
 
-			FileOutputStream out = new FileOutputStream(new File(infile));
+			FileOutputStream out = new FileOutputStream(new File(file));
 
 			XMLSerializer serializer = new XMLSerializer(out, format);
 
@@ -125,15 +116,17 @@ public class writeXML {
 		}
 	}
 
-	public void SaveXMLFile(Division in, String infile) {
-		createDocument();
+	public void runExample(Division in, String file) {
 		System.out.println("Started .. ");
 		createDOMTree(in);
-		printToFile(infile);
+		printToFile(file);
 		System.out.println("Generated file successfully.");
 	}
 
-	
+	public writeXMLtest() {
+
+		createDocument();
+	}
 
 	private Element createTeamElement(Team in) {
 		Element teamEle = dom.createElement("Team");
@@ -150,29 +143,9 @@ public class writeXML {
 		Text controlledText = dom.createTextNode(String.valueOf(in.GetPcControlled()));
 		controlledEle.appendChild(controlledText);
 		
-		Element dpvoorEle = dom.createElement("DoelpuntenVoor");
-		Text dpvoorText = dom.createTextNode(Integer.toString(in.GetDoelpuntenVoor()));
-		dpvoorEle.appendChild(dpvoorText);
-		
-		Element dptegenEle = dom.createElement("DoelpuntenTegen");
-		Text dptegenText = dom.createTextNode(Integer.toString(in.GetDoelpuntenTegen()));
-		dptegenEle.appendChild(dptegenText);
-		
-		Element dpsaldoEle = dom.createElement("Doelsaldo");
-		Text dpsaldoText = dom.createTextNode(Integer.toString(in.GetDoelpuntenSaldo()));
-		dpsaldoEle.appendChild(dpsaldoText);
-		
-		Element psaldoEle = dom.createElement("Punten");
-		Text psaldoText = dom.createTextNode(Integer.toString(in.GetPuntenSaldo()));
-		psaldoEle.appendChild(psaldoText);
-		
 		teamEle.appendChild(nameEle);
 		teamEle.appendChild(budgetEle);
 		teamEle.appendChild(controlledEle);
-		teamEle.appendChild(dpvoorEle);
-		teamEle.appendChild(dptegenEle);
-		teamEle.appendChild(dpsaldoEle);
-		teamEle.appendChild(psaldoEle);
 		
 		for (int i = 0; i < in.size(); i++) {
 			Element playEle = createPlayerElement(in.get(i));
